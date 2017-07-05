@@ -6,7 +6,7 @@
  *     http://creativecommons.org/publicdomain/zero/1.0/
  */
 
-package com.Proteus;
+package net.imagej;
 
 import ij.IJ;
 import ij.ImageJ;
@@ -14,6 +14,8 @@ import ij.ImagePlus;
 import ij.gui.GenericDialog;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.ImageProcessor;
+
+
 
 /**
  * A template for processing each pixel of either

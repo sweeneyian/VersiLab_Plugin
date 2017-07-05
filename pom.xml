@@ -117,9 +117,9 @@
 		<dependency>
 		    <groupId>net.imagej</groupId>
 		    <artifactId>ij</artifactId>
+		    <version>1.51p</version>
 		</dependency>
-	
-		
+
 	
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
@@ -149,6 +149,9 @@
 		    <artifactId>opencv</artifactId>
 		    <version>3.2.0-0</version>
 		</dependency>
+		
+		
+
 		
 	</dependencies>
 </project>
