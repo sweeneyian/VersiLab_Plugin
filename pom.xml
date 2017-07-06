@@ -5,26 +5,30 @@
         http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-	<!-- https://mvnrepository.com/artifact/org.scijava/pom-scijava -->
-	<parent>
+
+ 
+ <!-- 
+ 	  <parent>
 		 <groupId>org.scijava</groupId>
 		 <artifactId>pom-scijava</artifactId>
 		 <version>16.2.0</version>
 		   	<relativePath />
 	 </parent>
+ 	  -->
  
-    <groupId>com.Proteus</groupId>
-    <artifactId>com.Proteus.VersiLab</artifactId>
+     <parent>
+        <groupId>net.imagej</groupId>
+        <artifactId>pom-imagej</artifactId>
+        <version>15.4.0</version>
+    </parent>
+    
+    <artifactId>VersiLab-plugin</artifactId>
     <version>0.1.0-SNAPSHOT</version>
  
-    <name>VersiLab</name>
-    <description>VersiLab Plugin for ImageJ</description>
-    <url>https://github.com/sweeneyian/VersiLab_Plugin/</url>
+    <name>VersiLab plugin for imageJ</name>
+    <description>VersiLab Plugin for ImageJ </description>
+    <url>https://github.com/sweeneyian/VersiLab_Plugin</url>
     <inceptionYear>2017</inceptionYear>
-    <organization>
-        <name>Heriot Watt</name>
-        <url>https://www.hw.ac.uk/schools/mathematical-computer-sciences.htm</url>
-    </organization>
     <licenses>
         <license>
             <name>CC0 1.0 Universal License</name>
@@ -52,7 +56,8 @@
     </developers>
     <contributors>
         <contributor>
-            <name>None</name>
+            <name>Hadrien Mary</name>
+            <url>http://imagej.net/User:Hadim</url>
         </contributor>
     </contributors>
  
@@ -71,18 +76,12 @@
     </scm>
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>http://github.com/sweeneyian/VersiLab_Plugin/issues</url>
+        <url>https://github.com/sweeneyian/VersiLab_Plugin/issues</url>
     </issueManagement>
     <ciManagement>
         <system>None</system>
     </ciManagement>
  
-    <properties>
-        <main-class>com.Proteus.VersiLab_Plugin</main-class>
-        <package-name>com.Proteus</package-name>
-        <license.licenseName>cc0</license.licenseName>
-        <license.copyrightOwners>N/A</license.copyrightOwners>
-    </properties>
  
     <repositories>
         <repository>
@@ -97,6 +96,12 @@
             <groupId>net.imagej</groupId>
             <artifactId>imagej</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>org.scijava</groupId>
+            <artifactId>scijava-common</artifactId>
+        </dependency>
+        
  
         <!-- Test dependencies -->
         <dependency>

@@ -77,7 +77,7 @@ public class MainAppFrame extends JFrame {
         // Init the root layout
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("/net/imagej/plugin/minimalJavaFXPlugin/gui/view/RootLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/Proteus/gui/view/RootLayout.fxml"));
             TilePane rootLayout = (TilePane) loader.load();
 
             // Get the controller and add an ImageJ context to it.

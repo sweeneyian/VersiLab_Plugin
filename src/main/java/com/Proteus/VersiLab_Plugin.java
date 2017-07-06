@@ -31,7 +31,7 @@ import org.scijava.log.LogService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
-@Plugin(type = Command.class, menuPath = "Plugins>Example>Minimal JavaFX Plugin")
+@Plugin(type = Command.class, menuPath = "Plugins>1VersiLab_Plugin")
 public class VersiLab_Plugin implements Command{
 	@Parameter
     private ImageJ ij;
@@ -39,7 +39,7 @@ public class VersiLab_Plugin implements Command{
     @Parameter
     private LogService log;
 
-    public static final String PLUGIN_NAME = "Minimal JavaFX Plugin";
+    public static final String PLUGIN_NAME = "1VersiLab_Plugin";
     public static final String VERSION = version();
 
     private static String version() {
