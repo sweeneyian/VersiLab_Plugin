@@ -21,53 +21,57 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.Proteus;
+package com.Proteus.gui.view;
 
-import net.imagej.ImageJ;
-import com.Proteus.gui.MainAppFrame;
-
-import org.scijava.command.Command;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import org.scijava.Context;
 import org.scijava.log.LogService;
 import org.scijava.plugin.Parameter;
-import org.scijava.plugin.Plugin;
 
-@Plugin(type = Command.class, menuPath = "Plugins>Example>Minimal JavaFX Plugin")
-public class VersiLab_Plugin implements Command{
-	@Parameter
-    private ImageJ ij;
+/**
+ * FXML Controller class
+ *
+ * @author Hadrien Mary
+ */
+public class RootLayoutController implements Initializable {
 
     @Parameter
     private LogService log;
+    
+    @FXML
+    private Label testLabel;
 
-    public static final String PLUGIN_NAME = "Minimal JavaFX Plugin";
-    public static final String VERSION = version();
+    @FXML
+    private TextField testField;
 
-    private static String version() {
-        String version = null;
-        final Package pack = VersiLab_Plugin.class.getPackage();
-        if (pack != null) {
-            version = pack.getImplementationVersion();
-        }
-        return version == null ? "DEVELOPMENT" : version;
+    @FXML
+    private Button testButton;
+    
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
+        log.info("The button is clicked");
+    }
+    
+    @FXML
+    private void handleFieldAction(KeyEvent event) {
+        log.info("The field has been modified");
+        log.info(testField.getText());
     }
 
     @Override
-    public void run() {
-
-        log.info("Running " + PLUGIN_NAME + " version " + VERSION);
-               
-        // Launch JavaFX interface
-        MainAppFrame app = new MainAppFrame(ij);
-        app.setTitle(PLUGIN_NAME + " version " + VERSION);
-        app.init();
-        
+    public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public static void main(final String... args) throws Exception {
-        // Launch ImageJ as usual.
-        final ImageJ ij = net.imagej.Main.launch(args);
-
-        // Launch the command.
-        ij.command().run(VersiLab_Plugin.class, true);
+    public void setContext(Context context) {
+        context.inject(this);
     }
+
 }

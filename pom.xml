@@ -1,157 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-		http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+        http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+	<!-- https://mvnrepository.com/artifact/org.scijava/pom-scijava -->
 	<parent>
-		<groupId>org.scijava</groupId>
-		<artifactId>pom-scijava</artifactId>
-		<version>14.0.0</version>
-		<relativePath />
-	</parent>
-
-	<groupId>com.Proteus</groupId>
-	<artifactId>VersiLab_Plugin</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
-
-	<name>VersiLab Plugin</name>
-	<description>A Proteus VersiLab Maven project implementing an ImageJ 1.51h plugin.</description>
-	<url>https://proteus.ac.uk/</url>
-	<inceptionYear>2017</inceptionYear>
-	<organization>
-		<name>Proteus</name>
-		<url>https://proteus.ac.uk//</url>
-	</organization>
-	<licenses>
-		<license>
-			<name>Simplified BSD License</name>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-
-	<developers>
-		<developer>
-			<id>is35</id>
-			<name>Ian Sweeney</name>
-			<url>https://www.hw.ac.uk/schools/mathematical-computer-sciences.htm</url>
-			<roles>
-				<role>lead</role>
-				<role>developer</role>
-				<role>debugger</role>
-				<role>reviewer</role>
-				<role>support</role>
-				<role>maintainer</role>
-			</roles>
-		</developer>
-	</developers>
-	<contributors>
-		<contributor>
-			<name>Curtis Rueden</name>
-			<url>http://imagej.net/User:Rueden</url>
-			<properties><id>ctrueden</id></properties>
-		</contributor>
-		<contributor>
-			<name>Johannes Schindelin</name>
-			<url>http://imagej.net/User:Schindelin</url>
-			<roles><role>founder</role></roles>
-			<properties><id>dscho</id></properties>
-		</contributor>
-		<contributor>
-			<name>Olivier Burri</name>
-			<url>http://imagej.net/User:Oburri</url>
-			<properties><id>lacan</id></properties>
-		</contributor>
-		<contributor>
-			<name>Mark Hiner</name>
-			<url>http://imagej.net/User:Hinerm</url>
-			<properties><id>hinerm</id></properties>
-		</contributor>
-		<contributor>
-			<name>Jules Maselbas</name>
-		</contributor>
-		<contributor>
-			<name>Kota Miura</name>
-			<url>http://imagej.net/User:Miura</url>
-			<properties><id>cmci</id></properties>
-		</contributor>
-		<contributor>
-			<name>Yili Zhao</name>
-			<url>http://imagej.net/User:Panovr</url>
-			<properties><id>panovr</id></properties>
-		</contributor>
-	</contributors>
-
-	<mailingLists>
-		<mailingList>
-			<name>None</name>
-			<archive>None</archive>
-		</mailingList>
-	</mailingLists>
-
-	<scm>
-		<connection>scm:git:git://github.com/sweeneyian/VersiLab_Plugin</connection>
-		<developerConnection>scm:git:git@github.com:sweeneyian/VersiLab_Plugin</developerConnection>
-		<tag>HEAD</tag>
-		<url>https://github.com/sweeneyian/VersiLab_Plugin</url>
-	</scm>
-	<issueManagement>
-		<system>GitHub Issues</system>
-		<url>https://github.com/sweeneyian/VersiLab_Plugin/issues</url>
-	</issueManagement>
-	<ciManagement>
-		<system>None</system>
-	</ciManagement>
-
-	<properties>
-		<package-name>com.Proteus</package-name>
-		<main-class>com.Proteus.VersiLab_Plugin</main-class>
-		<license.licenseName>bsd_2</license.licenseName>
-		<license.copyrightOwners>Proteus</license.copyrightOwners>
-	</properties>
-
-	<dependencies>
-		
-		<!-- https://mvnrepository.com/artifact/net.imagej/ij -->
-		<dependency>
-		    <groupId>net.imagej</groupId>
-		    <artifactId>ij</artifactId>
-		    <version>1.51p</version>
-		</dependency>
-
-	
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <scope>test</scope>
-		</dependency>
-	
-	
-		<!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
-		<dependency>
-		    <groupId>net.java.dev.jna</groupId>
-		    <artifactId>jna</artifactId>
-		 </dependency>
-	
-		
-		<!-- https://mvnrepository.com/artifact/net.sf.trove4j/trove4j -->
-		<dependency>
-		    <groupId>net.sf.trove4j</groupId>
-		    <artifactId>trove4j</artifactId>
-		    <version>3.0.3</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
-		<dependency>
-		    <groupId>org.openpnp</groupId>
-		    <artifactId>opencv</artifactId>
-		    <version>3.2.0-0</version>
-		</dependency>
-		
-		
-
-		
-	</dependencies>
+		 <groupId>org.scijava</groupId>
+		 <artifactId>pom-scijava</artifactId>
+		 <version>16.2.0</version>
+		   	<relativePath />
+	 </parent>
+ 
+    <groupId>com.Proteus</groupId>
+    <artifactId>com.Proteus.VersiLab</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+ 
+    <name>VersiLab</name>
+    <description>VersiLab Plugin for ImageJ</description>
+    <url>https://github.com/sweeneyian/VersiLab_Plugin/</url>
+    <inceptionYear>2017</inceptionYear>
+    <organization>
+        <name>Heriot Watt</name>
+        <url>https://www.hw.ac.uk/schools/mathematical-computer-sciences.htm</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>CC0 1.0 Universal License</name>
+            <url>http://creativecommons.org/publicdomain/zero/1.0/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+ 
+    <developers>
+        <developer>
+            <id>sweeneyian</id>
+            <name>Ian Sweeney</name>
+            <url>https://imagej.net/User:sweeneyian</url>
+            <roles>
+                <!-- see https://imagej.net/Team -->
+                <role>founder</role>
+                <role>lead</role>
+                <role>developer</role>
+                <role>debugger</role>
+                <role>reviewer</role>
+                <role>support</role>
+                <role>maintainer</role>
+            </roles>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <name>None</name>
+        </contributor>
+    </contributors>
+ 
+    <mailingLists>
+        <mailingList>
+            <name>ImageJ Forum</name>
+            <archive>http://forum.imagej.net/</archive>
+        </mailingList>
+    </mailingLists>
+ 
+    <scm>
+        <connection>scm:git:git://github.com/sweeneyian/VersiLab_Plugin</connection>
+        <developerConnection>scm:git:git@github.com:sweeneyian/VersiLab_Plugin</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/sweeneyian/VersiLab_Plugin</url>
+    </scm>
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>http://github.com/sweeneyian/VersiLab_Plugin/issues</url>
+    </issueManagement>
+    <ciManagement>
+        <system>None</system>
+    </ciManagement>
+ 
+    <properties>
+        <main-class>com.Proteus.VersiLab_Plugin</main-class>
+        <package-name>com.Proteus</package-name>
+        <license.licenseName>cc0</license.licenseName>
+        <license.copyrightOwners>N/A</license.copyrightOwners>
+    </properties>
+ 
+    <repositories>
+        <repository>
+            <id>imagej.public</id>
+            <url>http://maven.imagej.net/content/groups/public</url>
+        </repository>
+    </repositories>
+ 
+    <dependencies>
+        <!-- ImageJ dependencies -->
+        <dependency>
+            <groupId>net.imagej</groupId>
+            <artifactId>imagej</artifactId>
+        </dependency>
+ 
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
+
+
