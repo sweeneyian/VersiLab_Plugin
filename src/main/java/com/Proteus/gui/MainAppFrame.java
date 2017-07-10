@@ -43,7 +43,12 @@ import org.scijava.plugin.Parameter;
  */
 public class MainAppFrame extends JFrame {
 
-    @Parameter
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Parameter
     private LogService log;
 
     private ImageJ ij;
@@ -77,7 +82,7 @@ public class MainAppFrame extends JFrame {
         // Init the root layout
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("/com/Proteus/gui/view/RootLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/Proteus/gui/view/VersiLab.fxml"));
             TilePane rootLayout = (TilePane) loader.load();
 
             // Get the controller and add an ImageJ context to it.

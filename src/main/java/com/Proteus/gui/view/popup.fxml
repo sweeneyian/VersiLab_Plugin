@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.*?>
+<?scenebuilder-stylesheet application.css?>
+<?import java.lang.String?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.FlowPane?>
+<BorderPane fx:id="popupPane" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Proteus.gui.view.PopupController">
+
+    <center>
+        <GridPane>
+            <ListView fx:id="visibleList" GridPane.columnIndex="1" GridPane.rowIndex="0">
+
+            </ListView>
+            <ListView fx:id="visibleValues" GridPane.columnIndex="2" GridPane.rowIndex="0">
+
+            </ListView>
+            <ListView fx:id="visibleNames" GridPane.columnIndex="0" GridPane.rowIndex="0">
+
+            </ListView>
+        </GridPane>
+    </center>
+</BorderPane>
