@@ -1,8 +1,8 @@
 package com.Proteus.algorithms;
 
-import VersiLab.Main;
-import VersiLab.popup.PopupController;
-import VersiLab.Controller;
+import com.Proteus.VersiLab_Plugin;
+import com.Proteus.gui.view.PopupController;
+import com.Proteus.gui.view.VersiLabController;
 
 
 import org.opencv.core.*;
@@ -23,11 +23,11 @@ import java.util.List;
 
 import static org.opencv.imgproc.Imgproc.*;
 
-public class CoreDetectionOCV implements Controller.OpenCVImageProcess {
+public class CoreDetectionOCV implements VersiLabController.OpenCVImageProcess {
 
     public void initialise() {
         //System.out.println("we are here1");
-        Controller mainController = Main.getController();
+        VersiLabController mainController = VersiLab_Plugin.getVersiLabPluginController();
         mainController.clearPopupSliders();
         mainController.addPopupSlider("Threshhold", 0, 255, 255, 1); // slider [0]
         mainController.addPopupSlider("Canny threshold", 0, 255, 255, 1); // slider [0]
@@ -145,7 +145,7 @@ public class CoreDetectionOCV implements Controller.OpenCVImageProcess {
                 }
             }
 
-            Controller.clearTroveInt();
+            VersiLabController.clearTroveInt();
 
 
         for (Circle ball: balls) {
@@ -153,9 +153,9 @@ public class CoreDetectionOCV implements Controller.OpenCVImageProcess {
                 circle(imageIn, new Point(ball.x, ball.y), (int) ball.radius, new Scalar(0, 255, 0), 1);
                 //circle(imageIn, (Point) centers.get(j), 1, new Scalar(0, 255, 0), -1);
                 //cv2.circle(drawing, center, 3, (255, 0, 0), -1)
-                Controller.addTroveInt((int)ball.x);
-                Controller.addTroveInt((int)ball.y);
-                Controller.addTroveInt((int)ball.radius);
+                VersiLabController.addTroveInt((int)ball.x);
+                VersiLabController.addTroveInt((int)ball.y);
+                VersiLabController.addTroveInt((int)ball.radius);
             }
 
             if (stage==4)

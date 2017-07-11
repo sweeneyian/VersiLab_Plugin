@@ -60,6 +60,7 @@ public class PopupController implements Initializable {
     @FXML
     public void clearSlider() {
       //  sliders.removeAll();
+    	//System.out.println("We try and clear slider");
         sliders.clear();
       //  texts.removeAll();
         texts.clear();

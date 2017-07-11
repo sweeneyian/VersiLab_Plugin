@@ -23,11 +23,18 @@
  */
 package com.Proteus.gui;
 
+import java.io.File;
 import java.io.IOException;
+
+import org.opencv.core.Core;
+
+import com.Proteus.gui.view.VersiLabController;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 /**
@@ -38,16 +45,25 @@ import javafx.stage.Stage;
  * @author Hadrien Mary
  */
 public class MainApp extends Application {
-
+	
+    private static VersiLabController controller;
     private Stage primaryStage;
-    private TilePane rootLayout;
+    private BorderPane rootLayout;
 
     @Override
     public void start(Stage primaryStage) {
 
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Hello World!");
+        this.primaryStage.setTitle("VersiLab!");
 
+       
+//    	DirectoryChooser directoryChooser = new DirectoryChooser();
+//    	directoryChooser.setTitle("Please select folder OpenCV->build->java->x64");
+//        File selectedDirectory = directoryChooser.showDialog(primaryStage);
+//	    String directory = selectedDirectory.getAbsolutePath();
+//        //System
+//	    System.load(directory + "\\opencv_java320.dll");
+	    
         this.initRootLayout();
 
         this.primaryStage.show();
@@ -57,8 +73,10 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("/com/Proteus/gui/view/VersiLab.fxml"));
-            rootLayout = (TilePane) loader.load();
+            loader.setLocation(MainApp.class.getResource("/com/Proteus/gui/view/VersiLabRootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+            
+            controller = loader.getController();
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -83,6 +101,11 @@ public class MainApp extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+    	
+
+    		
         launch(args);
     }
+    
+    public static VersiLabController getController(){return controller;}
 }

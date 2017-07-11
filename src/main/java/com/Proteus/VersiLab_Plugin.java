@@ -23,13 +23,25 @@
  */
 package com.Proteus;
 
-import net.imagej.ImageJ;
 import com.Proteus.gui.MainAppFrame;
+import com.Proteus.gui.view.VersiLabController;
+
+import net.imagej.ImageJ;
+
+
+import javafx.stage.Stage;
+//import net.imagej.plugin.minimalJavaFXPlugin.gui.MainAppFrame;
 
 import org.scijava.command.Command;
 import org.scijava.log.LogService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
+
+import java.io.File;
+
+import javax.swing.JFileChooser;
+
+import org.opencv.core.Core;
 
 @Plugin(type = Command.class, menuPath = "Plugins>1VersiLab_Plugin")
 public class VersiLab_Plugin implements Command{
@@ -41,6 +53,8 @@ public class VersiLab_Plugin implements Command{
 
     public static final String PLUGIN_NAME = "1VersiLab_Plugin";
     public static final String VERSION = version();
+    
+    public static VersiLabController versiLabController;
 
     private static String version() {
         String version = null;
@@ -60,14 +74,24 @@ public class VersiLab_Plugin implements Command{
         MainAppFrame app = new MainAppFrame(ij);
         app.setTitle(PLUGIN_NAME + " version " + VERSION);
         app.init();
-        
+
     }
 
     public static void main(final String... args) throws Exception {
         // Launch ImageJ as usual.
         final ImageJ ij = net.imagej.Main.launch(args);
+        
 
         // Launch the command.
         ij.command().run(VersiLab_Plugin.class, true);
     }
+    
+    public static void setVeriLabPluginController(VersiLabController vlc){
+    	versiLabController = vlc;
+    }
+    
+    public static VersiLabController getVersiLabPluginController(){
+    	return versiLabController;
+    }
+    
 }

@@ -1,16 +1,18 @@
 package com.Proteus.algorithms;
 
-import VersiLab.Controller;
-import VersiLab.Main;
-import VersiLab.popup.PopupController;
+import com.Proteus.VersiLab_Plugin;
+import com.Proteus.gui.view.PopupController;
+import com.Proteus.gui.view.VersiLabController;
+
 import ij.ImagePlus;
+
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 import static org.opencv.imgproc.Imgproc.*;
 
-public class CoreDetectionIJ implements Controller.ImageJImageProcess {
+public class CoreDetectionIJ implements VersiLabController.ImageJImageProcess {
 
     @Override
     public ImagePlus processImage(ImagePlus imageIn, int counter) {
@@ -25,7 +27,7 @@ public class CoreDetectionIJ implements Controller.ImageJImageProcess {
 
     public void initialise() {
 		System.out.println("Initialising CoreDetectionIJ");
-		Controller mainController = Main.getController();
+		VersiLabController mainController = VersiLab_Plugin.getVersiLabPluginController();
 		mainController.addPopupSlider("min_dist", 5, 15, 8, 1); // slider [0]
         mainController.addPopupSlider("param_1 Canny Edge", 60, 100, 60, 1); // slider [1]
         mainController.addPopupSlider("param_2 Center detection", 0, 255, 255, 1); // slider [2]
