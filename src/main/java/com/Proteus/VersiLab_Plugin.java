@@ -28,8 +28,6 @@ import com.Proteus.gui.view.VersiLabController;
 
 import net.imagej.ImageJ;
 
-
-import javafx.stage.Stage;
 //import net.imagej.plugin.minimalJavaFXPlugin.gui.MainAppFrame;
 
 import org.scijava.command.Command;
@@ -37,11 +35,7 @@ import org.scijava.log.LogService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
-import java.io.File;
 
-import javax.swing.JFileChooser;
-
-import org.opencv.core.Core;
 
 @Plugin(type = Command.class, menuPath = "Plugins>1VersiLab_Plugin")
 public class VersiLab_Plugin implements Command{

@@ -163,7 +163,7 @@ public class MainAppFrame extends JFrame {
         }
         System.load(OpenCVPath + "\\opencv_java320.dll");
 
-        if (JNI4NIPath==""){
+/*        if (JNI4NIPath==""){
         chooser.setDialogTitle("Please select folder OpenCV->build->java->x64");
         
 	        //    
@@ -178,7 +178,7 @@ public class MainAppFrame extends JFrame {
 	        	}
 	        }
         }
-        System.load(JNI4NIPath + "\\JNI4NI.jar");
+        System.load(JNI4NIPath + "\\JNI4NI.jar");*/
         
         
         ij.context().inject(this);

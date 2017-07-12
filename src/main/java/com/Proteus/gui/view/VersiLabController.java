@@ -75,7 +75,8 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
-
+import mmcorej.CMMCore;
+import mmcorej.StrVector;
 
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
