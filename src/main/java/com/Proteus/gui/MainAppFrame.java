@@ -42,14 +42,15 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 
-import net.imagej.ImageJ;
+//import net.imagej.ImageJ;
 import javafx.scene.layout.BorderPane;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-
+import net.imagej.ImageJ;
 import com.Proteus.VersiLab_Plugin;
 import com.Proteus.gui.view.VersiLabController;
+
 
 import ij.WindowManager; 
 
@@ -186,7 +187,7 @@ public class MainAppFrame extends JFrame {
     	
     	//System.load(opencv_java320.dll);
     	//nu.pattern.OpenCV.loadLibrary();
-        ij.context().inject(this);
+        ((Contextual) ij).context().inject(this);
         this.ij = ij;
     }
     
@@ -225,7 +226,7 @@ public class MainAppFrame extends JFrame {
             // Get the controller and add an ImageJ context to it.
             // need to figure out what context is doing exactly 
             VersiLabController controller = loader.getController();
-            controller.setContext(ij.context());
+            controller.setContext(((Contextual) ij).context());
             VersiLab_Plugin.setVeriLabPluginController(controller);
 
             // Show the scene containing the root layout.

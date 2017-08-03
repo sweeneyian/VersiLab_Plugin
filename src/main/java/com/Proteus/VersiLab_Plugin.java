@@ -26,6 +26,8 @@ package com.Proteus;
 import com.Proteus.gui.MainAppFrame;
 import com.Proteus.gui.view.VersiLabController;
 
+
+
 import net.imagej.ImageJ;
 
 //import net.imagej.plugin.minimalJavaFXPlugin.gui.MainAppFrame;
@@ -38,7 +40,7 @@ import org.scijava.plugin.Plugin;
 
 
 @Plugin(type = Command.class, menuPath = "Plugins>1VersiLab_Plugin")
-public class VersiLab_Plugin implements Command{
+public class VersiLab_Plugin implements Command {
 	@Parameter
     private ImageJ ij;
 
@@ -73,10 +75,12 @@ public class VersiLab_Plugin implements Command{
 
     public static void main(final String... args) throws Exception {
         // Launch ImageJ as usual.
-        final ImageJ ij = net.imagej.Main.launch(args);
+        //final ImageJ ij = ImageJ.Main(args); //Main.launch(args);
         
+        final ImageJ ij = net.imagej.Main.launch(args);
 
         // Launch the command.
+        
         ij.command().run(VersiLab_Plugin.class, true);
     }
     
