@@ -78,16 +78,19 @@ public class MainAppFrame extends JFrame {
     private JFXPanel fxPanel;
     
     private JFileChooser chooser;
+    
+
+	
 
     public MainAppFrame(ImageJ ij) {
-    	String pluginPath="";
-    	String MicroManagerPath="";
+    	//String pluginPath="";
+    	//String MicroManagerPath="";
     	String OpenCVPath="";
-    	String JNI4NIPath="";
+    	//String JNI4NIPath="";
     	chooser = new JFileChooser(); 
     	
     	
-    	chooser.setDialogTitle("Please select ImageJ plugin folder");
+    	/*chooser.setDialogTitle("Please select ImageJ plugin folder");
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         //chooser.setAcceptAllFileFilterUsed(false);
         //    
@@ -108,13 +111,8 @@ public class MainAppFrame extends JFrame {
         	    BufferedReader br = new BufferedReader(isr);
         	) {
         	    while ((line = br.readLine()) != null) {
-        	    
         	       if (linecount==0)
-        	    	   MicroManagerPath = line;
-        	       if (linecount==1)
         	    	   OpenCVPath = line;
-        	       if (linecount==2)
-        	    	   JNI4NIPath = line;
         	       linecount++;
         	    }
         	} catch (FileNotFoundException e) {
@@ -125,10 +123,10 @@ public class MainAppFrame extends JFrame {
 				e.printStackTrace();
 			}
         	
-        }
+        }*/
         
         
-        if (MicroManagerPath==""){
+/*        if (MicroManagerPath==""){
     	
 	        chooser.setDialogTitle("Please select folder micromanager with MMCoreJ_wrap.dll");
 	
@@ -144,24 +142,29 @@ public class MainAppFrame extends JFrame {
 	        	}
 	        }
         }
-        System.load(MicroManagerPath + "\\MMCoreJ_wrap.dll");
+        System.load(MicroManagerPath + "\\MMCoreJ_wrap.dll");*/
         
         if (OpenCVPath==""){
-        chooser.setDialogTitle("Please select folder OpenCV->build->java->x64");
+        chooser.setDialogTitle("Please select your systems opencv_java320.dll file in OpenCV->build->java->");
         
 	        //    
 	        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
 	        	//System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
 	        	OpenCVPath = chooser.getSelectedFile().toString();
 	        	// for some reason doesnt return x64 in directory, add \\x64 it to load 
-	        	try {
+	        	/*try {
 	        	    Files.write(Paths.get(pluginPath+"VersiLabConfig.txt"), OpenCVPath.getBytes(), StandardOpenOption.APPEND);
 	        	}catch (IOException e) {
 	        	    System.out.println(e);
-	        	}
+	        	}*/
 	        }
         }
-        System.load(OpenCVPath + "\\opencv_java320.dll");
+        try{System.load(OpenCVPath );
+        System.out.println("OPENCV LOADED");}
+        catch(Exception e){
+        	System.out.println(e);
+        	 System.out.println("OPENCV NOT Loaded");
+        }
 
 /*        if (JNI4NIPath==""){
         chooser.setDialogTitle("Please select folder OpenCV->build->java->x64");
@@ -179,8 +182,10 @@ public class MainAppFrame extends JFrame {
 	        }
         }
         System.load(JNI4NIPath + "\\JNI4NI.jar");*/
-        
-        
+
+    	
+    	//System.load(opencv_java320.dll);
+    	//nu.pattern.OpenCV.loadLibrary();
         ij.context().inject(this);
         this.ij = ij;
     }

@@ -66,7 +66,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import kirkwood.nidaq.access.NiDaqException;
+//import kirkwood.nidaq.access.NiDaqException;
 
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
@@ -75,8 +75,15 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
-import mmcorej.CMMCore;
-import mmcorej.StrVector;
+//import mmcorej.CMMCore;
+//import mmcorej.StrVector;
+
+import org.opencv.core.Core;
+import org.opencv.core.MatOfRect;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
+//import org.opencv.highgui.Highgui;
+import org.opencv.objdetect.CascadeClassifier;
 
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -88,7 +95,6 @@ import org.scijava.Context;
 import org.scijava.log.LogService;
 import org.scijava.plugin.Parameter;
 
-import com.Proteus.NiDaq.NiDaqSimpleDemo;
 import com.Proteus.utils.Utils;
 
 import gnu.trove.list.array.TIntArrayList;
@@ -210,8 +216,8 @@ public class VersiLabController implements Initializable {
 
     DecimalFormat df = new DecimalFormat("##");
 
-    private CMMCore core = new CMMCore();
-    String info = core.getVersionInfo();
+    //private CMMCore core = new CMMCore();
+    //String info = core.getVersionInfo();
 
     private static OpenCVImageProcess openCV_ip;
     private static ImageJImageProcess ImageJ_ip;
@@ -229,7 +235,7 @@ public class VersiLabController implements Initializable {
     private PopupController popupController;
 
     // LED Controls
-    NiDaqSimpleDemo niDaqSimpleDemo = new NiDaqSimpleDemo();
+    //NiDaqSimpleDemo niDaqSimpleDemo = new NiDaqSimpleDemo();
     
     private static int  numberOfLEDs;
     private static byte       redLED[] = { 1,0,0,0 }; // channel 0
@@ -325,8 +331,8 @@ public class VersiLabController implements Initializable {
         numberOfLED.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> selected, String oldSelection, String newSelection) {
-
-                if (oldSelection!=null) {
+            	System.out.println("LEDS Changed");
+                /*if (oldSelection!=null) {
                     try {
                         niDaqSimpleDemo.endTask();
                     } catch (NiDaqException e) {
@@ -367,7 +373,7 @@ public class VersiLabController implements Initializable {
                             // No LEDS will switch on in loop
                             numberOfLEDs =0;
                     }
-                }
+                }*/
             }
         });
 
@@ -733,7 +739,7 @@ public class VersiLabController implements Initializable {
     }
 
     private void LEDControl() {
-        if (numberOfLEDs >0) {
+        /*if (numberOfLEDs >0) {
             try {
                 switch (numberOfLEDs) {
                     case 1:
@@ -762,7 +768,7 @@ public class VersiLabController implements Initializable {
             } catch (Exception e) {
                 System.out.println(e);
             }
-        }
+        }*/
     }
 
     private void processData(){
@@ -902,7 +908,7 @@ public class VersiLabController implements Initializable {
                     }
                     break;
                 case "Grasshopper":
-                    try {
+                    /*try {
                         // using mmcore to acquire from grasshopper
                         // camera been initialised to 8bit images
                         core.setExposure(intCameraExposure);
@@ -939,7 +945,7 @@ public class VersiLabController implements Initializable {
 
                     } catch (Exception e) {
                         System.out.println(e);
-                    }
+                    }*/
                     break;
 
                 default:
@@ -1257,7 +1263,7 @@ public class VersiLabController implements Initializable {
 
                 break;
             case "Grasshopper":
-                    try {
+                    /*try {
                         core.loadDevice("Camera", "PointGrey", "Grasshopper3 GS3-U3-41C6NIR-C_15123105");
                         //core.loadDevice("LED", "NI100X", "DigitalIO");
                         core.initializeAllDevices();
@@ -1271,17 +1277,17 @@ public class VersiLabController implements Initializable {
                             System.out.println("Name: " + prop + ", value: " + val);
                         }
                         init = false;
-                /*StrVector LEDproperties = core.getDevicePropertyNames("LED");
+                StrVector LEDproperties = core.getDevicePropertyNames("LED");
                 for (int i = 0; i < LEDproperties.size(); i++) {
                     String prop = LEDproperties.get(i);
                     String val = core.getProperty("Camera", prop);
                     System.out.println("Name: " + prop + ", value: " + val);
-                }*/
+                }
 
                     } catch (Exception e) {
                         System.out.println("Exception: " + e.getMessage() + "\nExiting now.");
                         System.exit(1);
-                    }
+                    }*/
                     break;
             default:
                 break;

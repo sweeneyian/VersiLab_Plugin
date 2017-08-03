@@ -23,6 +23,7 @@ public class TestOpenCV implements VersiLabController.OpenCVImageProcess {
 		
 	}
 	
+	
 	public Mat processImage(Mat imageIn, int counter) {
 		// This is the black box
 		
