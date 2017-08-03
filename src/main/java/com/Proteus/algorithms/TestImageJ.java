@@ -5,9 +5,7 @@ import com.Proteus.gui.view.PopupController;
 import com.Proteus.gui.view.VersiLabController;
 
 import ij.ImagePlus;
-import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
-import static org.opencv.imgproc.Imgproc.*;
+
 
 public class TestImageJ implements VersiLabController.ImageJImageProcess {
 	
