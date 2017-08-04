@@ -685,7 +685,7 @@ public class VersiLabController implements Initializable {
                         grabFrame();
                         saveRawData(); // saves raw data
                         processData();
-                        saveProcessedData(); // saves processed data
+                        saveProcessedData(); // saves processed data 
                         // convert and show the frame
                         Image imageToShow;
 
