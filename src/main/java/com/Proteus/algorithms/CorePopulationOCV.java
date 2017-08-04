@@ -24,8 +24,6 @@ public class CorePopulationOCV implements VersiLabController.OpenCVImageProcess 
         //System.out.println("we are here1");
         VersiLabController mainController = VersiLab_Plugin.getVersiLabPluginController();
         mainController.clearPopupSliders();
-        mainController.addPopupSlider("threshold1", 0, 255, 255, 1); // slider [0]
-        mainController.addPopupSlider("threshold2", 0, 3, 3, 1); // slider [1]
     }
 
     public Mat processImage(Mat imageIn, int counter) {

@@ -678,23 +678,17 @@ public class VersiLabController implements Initializable {
                 	
                     @Override
                     public void run() {
-                    	System.out.println("Runnable frameGrabber");
                         counter++;
-                        System.out.println("update timers");
                         updateTimers();
                         // LED Control
-                        System.out.println("LED Control");
                         LEDControl();
-                        System.out.println("Grab Frame");
                         grabFrame();
-                        System.out.println("Process Data");
+                        saveRawData(); // saves raw data
                         processData();
-                        System.out.println("Save Data");
-                        saveData();
+                        saveProcessedData(); // saves processed data
                         // convert and show the frame
                         Image imageToShow;
 
-                        System.out.println("Show Image");
                         if (OpenCVProcessing) {
                             imageToShow = Utils.mat2Image(ProcessedOCVframe);
                         }
@@ -707,8 +701,9 @@ public class VersiLabController implements Initializable {
                 };
 
                 this.timer = Executors.newSingleThreadScheduledExecutor();
-                // 33 miliseconds scheduler...
-                this.timer.scheduleAtFixedRate(frameGrabber, 0, 20, TimeUnit.MILLISECONDS);
+                // zero delay in reececution
+                this.timer.scheduleAtFixedRate(frameGrabber, 0, 0, TimeUnit.MILLISECONDS);
+
 
                 // update the button content
                 this.button.setText("Stop Camera");
@@ -820,22 +815,23 @@ public class VersiLabController implements Initializable {
     }
 
 
-    private void saveData() {
+    private void saveRawData() {
         // See if we need to save raw data before processing it
-        String timedata = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS").format(Calendar.getInstance().getTime());
-
-        if (saveRawDatacheckBox.isSelected()){
+        if (saveRawDatacheckBox.isSelected()) {
             // save raw data
-            intSaveRawDataFrequencySlider = (int)saveRawDataFrequencySlider.getValue();
-            if(counter%intSaveRawDataFrequencySlider==0) {
+            intSaveRawDataFrequencySlider = (int) saveRawDataFrequencySlider.getValue();
+            if (counter % intSaveRawDataFrequencySlider == 0) {
+                String timedata = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS").format(Calendar.getInstance().getTime());
                 // when counter == slider frequency
                 Imgcodecs.imwrite("C:\\AcquisitionData\\" + folder + "\\" + "RAW\\" + timedata + "_RAW.tiff", RawOCVframe);
                 //System.out.println("C:\\AcquisitionData\\" + folder + "\\" + "RAW\\" + timedata+"_RAW.tiff");
             }
         }
+    }
 
-
+    private void saveProcessedData() {
         if (saveProcessedDatacheckBox.isSelected()){
+            String timedata = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS").format(Calendar.getInstance().getTime());
             //save processed data
             if(OpenCVProcessing){
                 //System.out.println(OCVframe);
