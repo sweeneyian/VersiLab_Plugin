@@ -13,7 +13,7 @@
     </parent>
     
     <artifactId>VersiLab_Plugin</artifactId>
-    <version>1.1.3-SNAPSHOT</version>
+    <version>1.1.4-SNAPSHOT</version>
 
  
     <name>VersiLab plugin for imageJ</name>
