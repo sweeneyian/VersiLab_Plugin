@@ -1,9 +1,9 @@
 package com.Proteus.algorithms;
 
 
-import com.Proteus.VersiLab_Plugin;
 import com.Proteus.gui.view.PopupController;
 import com.Proteus.gui.view.VersiLabController;
+import com.Proteus.imagej.VersiLab_Plugin;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Size;

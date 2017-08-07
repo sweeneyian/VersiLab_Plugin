@@ -66,7 +66,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import kirkwood.nidaq.NiDaqSimpleDemo;
+import kirkwood.nidaq.access.NiDaqException;
 //import kirkwood.nidaq.access.NiDaqException;
+import tw.edu.sju.ee.eea.jni.daqmx.DAQmx;
+
 
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
@@ -104,8 +108,7 @@ import ij.io.FileSaver;
 /**
  * FXML Controller class
  *
- * @author Hadrien Mary
- */
+ * @author Hadrien Mary*/
 public class VersiLabController implements Initializable {
     @Parameter
     private LogService log;
@@ -196,6 +199,7 @@ public class VersiLabController implements Initializable {
     private VideoCapture capture; 
     // a flag to change the button behavior
     private boolean cameraActive = false;
+    
 
     private static boolean OpenCVProcessing = true;
     private static int cameraId = 0, counter =0;// backoff = 20;
@@ -203,10 +207,12 @@ public class VersiLabController implements Initializable {
     long t0, t1, deltaT;
     double fps;
     private boolean init = true;
+    boolean setexposure = false;
     private Mat RawOCVframe = new Mat();
-    private ImagePlus RawIJframe;
-    private Mat ProcessedOCVframe;
-    private ImagePlus ProcessedIJframe;
+    private ImagePlus RawIJframe = new ImagePlus();
+    private Mat ProcessedOCVframe= new Mat();
+    private ImagePlus ProcessedIJframe = new ImagePlus();
+    private Image imageToShow; 
     private Stage stage;
     private Parent root;
     private String fileName = "default";
@@ -235,7 +241,9 @@ public class VersiLabController implements Initializable {
     private PopupController popupController;
 
     // LED Controls
-    //NiDaqSimpleDemo niDaqSimpleDemo = new NiDaqSimpleDemo();
+    NiDaqSimpleDemo niDaqSimpleDemo = new NiDaqSimpleDemo();
+    
+     //DAQmx nidaq = new DAQmx() ;
     
     private static int  numberOfLEDs;
     private static byte       redLED[] = { 1,0,0,0 }; // channel 0
@@ -288,9 +296,12 @@ public class VersiLabController implements Initializable {
                     switch (newSelection) {
                         case "WebCam": /*dosomething*/
                             init = false;
+                            cameraId = 0;
                             break;
+                           
                         case "Grasshopper": /*dosomething*/
                             init = true;
+                            cameraId = 1;
                             break;
 
                         case "File":
@@ -332,7 +343,8 @@ public class VersiLabController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> selected, String oldSelection, String newSelection) {
             	System.out.println("LEDS Changed");
-                /*if (oldSelection!=null) {
+            	//nidaq.
+                if (oldSelection!=null) {
                     try {
                         niDaqSimpleDemo.endTask();
                     } catch (NiDaqException e) {
@@ -373,7 +385,7 @@ public class VersiLabController implements Initializable {
                             // No LEDS will switch on in loop
                             numberOfLEDs =0;
                     }
-                }*/
+                }
             }
         });
 
@@ -564,8 +576,7 @@ public class VersiLabController implements Initializable {
                         String.valueOf((int) cameraExposureSlider.getValue())+" ms");
                 //System.out.println("slider value changed");
                 intCameraExposure = (int)cameraExposureSlider.getValue();
-                //boolean setexposure = capture.set(CAP_PROP_EXPOSURE ,((double)cameraExposureSlider.getValue()));
-                //System.out.println(setexposure);
+                
                 //set(CV_CAP_PROP_EXPOSURE, (double)cameraExposureSlider.getValue()/1000 );
                 //capture.set(CAP_PROP_FRAME_WIDTH ,((double)cameraExposureSlider.getValue()));
                 //capture.set(CAP_PROP_FRAME_HEIGHT ,((double)cameraExposureSlider.getValue()));
@@ -613,10 +624,11 @@ public class VersiLabController implements Initializable {
                         // LED Control
                         LEDControl();
                         grabFrame();
+                        saveRawCalibrationData();
                         processData();
-                        saveCalibrationData();
+                        saveProcessedCalibrationData();
                         // convert and show the frame
-                        Image imageToShow;
+                        
 
                         if (OpenCVProcessing) {
                             imageToShow = Utils.mat2Image(ProcessedOCVframe);
@@ -630,8 +642,8 @@ public class VersiLabController implements Initializable {
                 };
 
                 this.timer = Executors.newSingleThreadScheduledExecutor();
-                // 500ms...
-                this.timer.scheduleAtFixedRate(frameGrabber, 0, 500, TimeUnit.MILLISECONDS);
+                // 200ms per frame for caliibration phase.
+                this.timer.scheduleAtFixedRate(frameGrabber, 0, 200, TimeUnit.MILLISECONDS);
 
                 // update the button content
                 this.CaptureBackground.setText("Stop Calibration");
@@ -687,7 +699,7 @@ public class VersiLabController implements Initializable {
                         processData();
                         saveProcessedData(); // saves processed data 
                         // convert and show the frame
-                        Image imageToShow;
+                        
 
                         if (OpenCVProcessing) {
                             imageToShow = Utils.mat2Image(ProcessedOCVframe);
@@ -701,8 +713,8 @@ public class VersiLabController implements Initializable {
                 };
 
                 this.timer = Executors.newSingleThreadScheduledExecutor();
-                // zero delay in reececution
-                this.timer.scheduleAtFixedRate(frameGrabber, 0, 0, TimeUnit.MILLISECONDS);
+                // up to 30 ms delay 
+                this.timer.scheduleAtFixedRate(frameGrabber, 0, 30, TimeUnit.MILLISECONDS);
 
 
                 // update the button content
@@ -734,7 +746,7 @@ public class VersiLabController implements Initializable {
     }
 
     private void LEDControl() {
-        /*if (numberOfLEDs >0) {
+        if (numberOfLEDs >0) {
             try {
                 switch (numberOfLEDs) {
                     case 1:
@@ -763,7 +775,7 @@ public class VersiLabController implements Initializable {
             } catch (Exception e) {
                 System.out.println(e);
             }
-        }*/
+        }
     }
 
     private void processData(){
@@ -791,12 +803,13 @@ public class VersiLabController implements Initializable {
 
 
 
-    private void saveCalibrationData() {
+    private void saveRawCalibrationData() {
         //String timedata = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS").format(Calendar.getInstance().getTime());
+        Imgcodecs.imwrite("C:\\AcquisitionData\\" + folder + "\\" + "BACKGROUND\\BACKGROUND_RAW.tiff", RawOCVframe);     
+    }
 
-
-        Imgcodecs.imwrite("C:\\AcquisitionData\\" + folder + "\\" + "BACKGROUND\\BACKGROUND_RAW.tiff", RawOCVframe);
-
+    private void saveProcessedCalibrationData () {
+        
         if(OpenCVProcessing){
             //System.out.println(OCVframe);
             Imgcodecs.imwrite("C:\\AcquisitionData\\" + folder + "\\" + "BACKGROUND\\BACKGROUND_OCV_PROCESSED.tiff", ProcessedOCVframe);
@@ -813,7 +826,6 @@ public class VersiLabController implements Initializable {
             }
         }
     }
-
 
     private void saveRawData() {
         // See if we need to save raw data before processing it
@@ -887,10 +899,10 @@ public class VersiLabController implements Initializable {
                     break;
                 case "WebCam":
                     // read the current frame
-                	System.out.println("Grab Frame From Webcam");
-                	System.out.println("Set Exposure");
+                	//System.out.println("Grab Frame From Webcam");
+                	//System.out.println("Set Exposure");
                     this.capture.set(CAP_PROP_EXPOSURE, intCameraExposure);
-                    System.out.println("Read");
+                    //System.out.println("Read");
                     this.capture.read(RawOCVframe);
 
                     // converts webcam to black and white
@@ -899,16 +911,36 @@ public class VersiLabController implements Initializable {
                         Imgproc.cvtColor(RawOCVframe, RawOCVframe, Imgproc.COLOR_BGR2GRAY);
                     }
                     if (!OpenCVProcessing){
-                    	System.out.println("Not empty");
+                    	//System.out.println("Not empty");
                         RawIJframe =  createIJframe(RawOCVframe);
                     }
                     break;
                 case "Grasshopper":
-                    /*try {
+                    try {
                         // using mmcore to acquire from grasshopper
                         // camera been initialised to 8bit images
-                        core.setExposure(intCameraExposure);
-                        core.snapImage();
+                    	setexposure = capture.set(CAP_PROP_EXPOSURE ,intCameraExposure);
+                        System.out.println("Set exposure: " + setexposure);
+                    	
+                        //capture.read(RawOCVframe);
+                        
+                        //this.capture.set(CAP_PROP_EXPOSURE, intCameraExposure);
+                        //System.out.println("Read");
+                        this.capture.read(RawOCVframe);
+
+                        // converts webcam to black and white
+                        if (!RawOCVframe.empty()) {
+                        	//System.out.println("Empty");
+                            Imgproc.cvtColor(RawOCVframe, RawOCVframe, Imgproc.COLOR_BGR2GRAY);
+                        }
+                        if (!OpenCVProcessing){
+                        	//System.out.println("Not empty");
+                            RawIJframe =  createIJframe(RawOCVframe);
+                        }
+                        
+                        /* uManager reading
+                        //core.setExposure(intCameraExposure);
+                        //core.snapImage();
                         //System.out.println("Byte Per Pixel: " + core.getBytesPerPixel());
 
                         if (core.getBytesPerPixel() == 1) {
@@ -937,11 +969,11 @@ public class VersiLabController implements Initializable {
                         } else {
                             System.out.println("Dont' know how to handle images with " +
                                    core.getBytesPerPixel() + " byte pixels.");
-                        }
+                        }*/
 
                     } catch (Exception e) {
                         System.out.println(e);
-                    }*/
+                    }
                     break;
 
                 default:
@@ -1259,7 +1291,12 @@ public class VersiLabController implements Initializable {
 
                 break;
             case "Grasshopper":
-                    /*try {
+                    try {
+                    	
+                    	// capture.open(1); cameraId is already 1 and opened
+                    	// for opencv we may need 10 bit picture handling
+                    	
+                    	/* micromanager initialisation
                         core.loadDevice("Camera", "PointGrey", "Grasshopper3 GS3-U3-41C6NIR-C_15123105");
                         //core.loadDevice("LED", "NI100X", "DigitalIO");
                         core.initializeAllDevices();
@@ -1273,17 +1310,17 @@ public class VersiLabController implements Initializable {
                             System.out.println("Name: " + prop + ", value: " + val);
                         }
                         init = false;
-                StrVector LEDproperties = core.getDevicePropertyNames("LED");
-                for (int i = 0; i < LEDproperties.size(); i++) {
-                    String prop = LEDproperties.get(i);
-                    String val = core.getProperty("Camera", prop);
-                    System.out.println("Name: " + prop + ", value: " + val);
-                }
+		                //StrVector LEDproperties = core.getDevicePropertyNames("LED");
+		                for (int i = 0; i < LEDproperties.size(); i++) {
+		                    String prop = LEDproperties.get(i);
+		                    String val = core.getProperty("Camera", prop);
+		                    System.out.println("Name: " + prop + ", value: " + val);
+		                }*/
 
                     } catch (Exception e) {
                         System.out.println("Exception: " + e.getMessage() + "\nExiting now.");
                         System.exit(1);
-                    }*/
+                    }
                     break;
             default:
                 break;

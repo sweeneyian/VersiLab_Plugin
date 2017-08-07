@@ -5,19 +5,24 @@
         http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
      
-	<parent>
+     <!--<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>16.1.0</version>
+		<relativePath />
+	</parent>-->
+	
+     <parent>
         <groupId>net.imagej</groupId>
         <artifactId>pom-imagej</artifactId>
         <version>15.4.0</version>
-        <!-- 17.0.0 <version>15.4.0</version> -->
-    </parent>
+    </parent> 
     
-    <artifactId>VersiLab_Plugin</artifactId>
-    <version>1.1.4-SNAPSHOT</version>
-
+    <artifactId>VersiLab-plugin</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
  
     <name>VersiLab plugin for imageJ</name>
-    <description>Trying to make VersiLab Plugin for Fiji</description>
+    <description>VersiLab Plugin for ImageJ </description>
     <url>https://github.com/sweeneyian/VersiLab_Plugin</url>
     <inceptionYear>2017</inceptionYear>
     <licenses>
@@ -28,7 +33,6 @@
         </license>
     </licenses>
  
-
     <developers>
         <developer>
             <id>sweeneyian</id>
@@ -73,27 +77,18 @@
     <ciManagement>
         <system>None</system>
     </ciManagement>
-    
-    
  
     <dependencies>
         <!-- ImageJ dependencies -->
         
-		<dependency>
-			<groupId>net.imagej</groupId>
-			<artifactId>imagej</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>net.imagej</groupId>
+            <artifactId>imagej</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.scijava</groupId>
             <artifactId>scijava-common</artifactId>
         </dependency>
-		<!-- https://mvnrepository.com/artifact/sc.fiji/fiji-lib -->
-		<dependency>
-		    <groupId>sc.fiji</groupId>
-		    <artifactId>fiji-lib</artifactId>
-		    <version>2.1.2</version>
-		</dependency>
-
         
         <!-- Enable IJ1 interface at runtime -->
         <dependency>
@@ -126,8 +121,15 @@
 		    <groupId>org.openpnp</groupId>
 		    <artifactId>opencv</artifactId>
 		    <version>3.2.0-0</version>
-		    
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/tw.edu.sju.ee.eea.jni/jni-daqmx -->
+		<dependency>
+		    <groupId>tw.edu.sju.ee.eea.jni</groupId>
+		    <artifactId>jni-daqmx</artifactId>
+		    <version>1.1</version>
+		</dependency>
+
+
     </dependencies>
     
     <repositories>
@@ -145,7 +147,7 @@
                 <configuration>
                     <licenseName>mit</licenseName>
                     <projectName>${project.description}</projectName>
-                    <organizationName>Hadrien Mary</organizationName>
+                    <organizationName>Ian Sweeney</organizationName>
                 </configuration>
             </plugin>
             <plugin>
@@ -167,5 +169,3 @@
     </build>
      
 </project>
-
-

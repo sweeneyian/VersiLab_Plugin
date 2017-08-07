@@ -1,8 +1,8 @@
 package com.Proteus.algorithms;
 
-import com.Proteus.VersiLab_Plugin;
 import com.Proteus.gui.view.PopupController;
 import com.Proteus.gui.view.VersiLabController;
+import com.Proteus.imagej.VersiLab_Plugin;
 
 import ij.ImagePlus;
 
@@ -10,7 +10,7 @@ import ij.ImagePlus;
 public class TestImageJ implements VersiLabController.ImageJImageProcess {
 	
 	public void initialise(){
-		// this is how we initialise initialise popop sliders
+		// this is how we initialise initialise popup sliders
 		//
 		//
 		VersiLabController mainController = VersiLab_Plugin.getVersiLabPluginController();

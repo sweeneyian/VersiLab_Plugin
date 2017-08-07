@@ -48,9 +48,9 @@ import javafx.scene.layout.BorderPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import net.imagej.ImageJ;
-import com.Proteus.VersiLab_Plugin;
-import com.Proteus.gui.view.VersiLabController;
 
+import com.Proteus.gui.view.VersiLabController;
+import com.Proteus.imagej.VersiLab_Plugin;
 
 import ij.WindowManager; 
 
@@ -160,8 +160,11 @@ public class MainAppFrame extends JFrame {
 	        	}*/
 	        }
         }
-        try{System.load(OpenCVPath );
-        System.out.println("OPENCV LOADED");}
+        try{
+        	//System.load(OpenCVPath );
+        	System.load("C:\\opencv-3.2.0\\opencv\\build\\java\\x64\\opencv_java320.dll");
+        	//System.load("C:\\Program Files\\Micro-Manager-1.4_64_nightly_20170618\\FlyCapture2_v100.dll");
+        	System.out.println("OPENCV LOADED");}
         catch(Exception e){
         	System.out.println(e);
         	 System.out.println("OPENCV NOT Loaded");
@@ -219,16 +222,19 @@ public class MainAppFrame extends JFrame {
     public void initFX(JFXPanel fxPanel) {
         // Init the root layout
         try {
+        	System.out.println("5");
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("/com/Proteus/gui/view/VersiLabRootLayout.fxml"));
+            
+            System.out.println("6");
             BorderPane rootLayout = (BorderPane) loader.load();
-
+            System.out.println("8");
             // Get the controller and add an ImageJ context to it.
             // need to figure out what context is doing exactly 
             VersiLabController controller = loader.getController();
             controller.setContext(((Contextual) ij).context());
             VersiLab_Plugin.setVeriLabPluginController(controller);
-
+            System.out.println("9");
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             this.fxPanel.setScene(scene);
@@ -236,7 +242,7 @@ public class MainAppFrame extends JFrame {
 
             // Resize the JFrame to the JavaFX scene
             this.setSize((int) scene.getWidth()+50, (int) scene.getHeight()+50);
-
+            System.out.println("10");
         } catch (IOException e) {
             e.printStackTrace();
         }

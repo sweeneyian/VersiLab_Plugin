@@ -47,13 +47,13 @@
                 </items>
             </ComboBox>
 
-            <ComboBox fx:id="ResolutionComboBox" prefWidth="150.0" promptText="Select Resolution" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <!--<ComboBox fx:id="ResolutionComboBox" prefWidth="150.0" promptText="Select Resolution" GridPane.columnIndex="1" GridPane.rowIndex="2">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
 
                     </FXCollections>
                 </items>
-            </ComboBox>
+            </ComboBox>-->
 
             <!--<Button fx:id="load_algorithm" alignment="center" onAction="#loadAlgorithm" text="Load Algorithm" GridPane.columnIndex="4" GridPane.rowIndex="2"/>-->
 
@@ -104,8 +104,8 @@
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="CoreDetectionOCV" />
-                        <String fx:value="TestImageJ" />
-                        <String fx:value="TestOpenCV" />
+                        <!--<String fx:value="TestImageJ" />
+                        <String fx:value="TestOpenCV" />-->
                     </FXCollections>
                 </items>
             </ComboBox>
@@ -114,9 +114,7 @@
             <ComboBox fx:id="AlgorithmComboBox" prefWidth="170.0" promptText="Loop Algorithm" GridPane.columnIndex="0" GridPane.rowIndex="14">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="CoreDetectionIJ"/>
                         <String fx:value="CorePopulationOCV"/>
-                        <String fx:value="CoreDetectionOCV" />
                         <String fx:value="TestImageJ" />
                         <String fx:value="TestOpenCV" />
                     </FXCollections>
@@ -125,19 +123,7 @@
 
 
 
-            <!--
-                        <ComboBox fx:id="AlgorithmComboBox" prefWidth="170.0" promptText="Loop Algorithm" GridPane.columnIndex="0" GridPane.rowIndex="14">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="CoreDetectionIJ"/>
-                        <String fx:value="CorePopulationOCV"/>
-                        <String fx:value="CoreDetectionOCV" />
-                        <String fx:value="TestImageJ" />
-                        <String fx:value="TestOpenCV" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
-            -->
+
             <Button fx:id="button" alignment="center" onAction="#startCamera" prefWidth="170.0" text="Start Camera" GridPane.columnIndex="0" GridPane.rowIndex="15"/>
 
 

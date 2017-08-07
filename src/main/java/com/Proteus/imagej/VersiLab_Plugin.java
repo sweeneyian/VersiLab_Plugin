@@ -21,14 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.Proteus;
+package com.Proteus.imagej;
 
 import com.Proteus.gui.MainAppFrame;
 import com.Proteus.gui.view.VersiLabController;
 
-
-
 import net.imagej.ImageJ;
+
+//import imagej.ImageJ;
 
 //import net.imagej.plugin.minimalJavaFXPlugin.gui.MainAppFrame;
 
@@ -67,7 +67,9 @@ public class VersiLab_Plugin implements Command {
         log.info("Running " + PLUGIN_NAME + " version " + VERSION);
                
         // Launch JavaFX interface
+        System.out.println("3");
         MainAppFrame app = new MainAppFrame(ij);
+        System.out.println("4");
         app.setTitle(PLUGIN_NAME + " version " + VERSION);
         app.init();
 
@@ -76,12 +78,13 @@ public class VersiLab_Plugin implements Command {
     public static void main(final String... args) throws Exception {
         // Launch ImageJ as usual.
         //final ImageJ ij = ImageJ.Main(args); //Main.launch(args);
-        
+    	System.out.println("1");
         final ImageJ ij = net.imagej.Main.launch(args);
-
+        System.out.println("2");
         // Launch the command.
         
         ij.command().run(VersiLab_Plugin.class, true);
+        System.out.println("3");
     }
     
     public static void setVeriLabPluginController(VersiLabController vlc){
