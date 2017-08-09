@@ -43,7 +43,7 @@ import javafx.stage.Stage;
  * this class is only here for education purpose.
  *
  * contributor: Hadrien Mary
- * @author Ian Sweeney
+ * author Ian Sweeney
  */
 public class MainApp extends Application {
 	

@@ -129,7 +129,7 @@ public class MainAppFrame extends JFrame {
             VersiLabController controller = loader.getController();
             controller.setContext(((Contextual) ij).context());
             VersiLab_Plugin.setVeriLabPluginController(controller);
-            System.out.println("9");
+            
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             this.fxPanel.setScene(scene);
@@ -137,7 +137,7 @@ public class MainAppFrame extends JFrame {
 
             // Resize the JFrame to the JavaFX scene
             this.setSize((int) scene.getWidth()+50, (int) scene.getHeight()+50);
-            System.out.println("10");
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
