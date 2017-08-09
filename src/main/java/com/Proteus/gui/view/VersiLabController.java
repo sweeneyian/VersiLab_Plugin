@@ -41,6 +41,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+
 import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.beans.value.ChangeListener;
@@ -69,7 +70,7 @@ import javafx.stage.WindowEvent;
 import kirkwood.nidaq.NiDaqSimpleDemo;
 import kirkwood.nidaq.access.NiDaqException;
 //import kirkwood.nidaq.access.NiDaqException;
-import tw.edu.sju.ee.eea.jni.daqmx.DAQmx;
+//import tw.edu.sju.ee.eea.jni.daqmx.DAQmx;
 
 
 import javax.tools.Diagnostic;
@@ -101,6 +102,7 @@ import org.scijava.plugin.Parameter;
 
 import com.Proteus.utils.Utils;
 
+import gnu.trove.list.array.TDoubleArrayList;
 import gnu.trove.list.array.TIntArrayList;
 import ij.ImagePlus;
 import ij.io.FileSaver;
@@ -108,7 +110,9 @@ import ij.io.FileSaver;
 /**
  * FXML Controller class
  *
- * @author Hadrien Mary*/
+ * contributor Haiden Mary
+ * author Ian Sweeney
+ * */
 public class VersiLabController implements Initializable {
     @Parameter
     private LogService log;
@@ -154,7 +158,7 @@ public class VersiLabController implements Initializable {
     @FXML
     private Slider cameraExposureSlider;
 
-
+    // OPEN CV VARIABLES
     private static int CAP_PROP_POS_MSEC       =0,
     CAP_PROP_POS_FRAMES     =1,
     CAP_PROP_POS_AVI_RATIO  =2,
@@ -197,7 +201,7 @@ public class VersiLabController implements Initializable {
     private ScheduledExecutorService timer;
     // the OpenCV object that realizes the video capture
     private VideoCapture capture; 
-    // a flag to change the button behavior
+    // a flag to change the button behaviour
     private boolean cameraActive = false;
     
 
@@ -222,6 +226,7 @@ public class VersiLabController implements Initializable {
 
     DecimalFormat df = new DecimalFormat("##");
 
+    // MicroManager Variables
     //private CMMCore core = new CMMCore();
     //String info = core.getVersionInfo();
 
@@ -242,9 +247,6 @@ public class VersiLabController implements Initializable {
 
     // LED Controls
     NiDaqSimpleDemo niDaqSimpleDemo = new NiDaqSimpleDemo();
-    
-     //DAQmx nidaq = new DAQmx() ;
-    
     private static int  numberOfLEDs;
     private static byte       redLED[] = { 1,0,0,0 }; // channel 0
     private static byte       greenLED[] = { 0,1,0,0 }; // channel 1
@@ -260,20 +262,14 @@ public class VersiLabController implements Initializable {
 
     // Vector used in initialising ImageProcess for quick lookup during loop processing
     private static Vector<Double> initVector = new Vector<>();
-    public static Vector getInitVector(){
-        return initVector;
-    }
-    public static void addInitVector(Double addDouble){
-        initVector.addElement(addDouble);
-    }
-    public static void clearInitVector(){
-        initVector.clear();
-    }
+    public static Vector getInitVector(){return initVector; }
+    public static void addInitVector(double adddouble){   initVector.addElement(adddouble);}
+    public static void clearInitVector(){initVector.clear();}
 
-    private static TIntArrayList troveIntArray = new TIntArrayList(30000, -999);
-    public static TIntArrayList getTroveIntArray(){return troveIntArray;}
-    public static void addTroveInt (int addint){troveIntArray.add(addint);}
-    public static void clearTroveInt (){troveIntArray.clear();}
+    private static TDoubleArrayList troveDoubleArray = new TDoubleArrayList(30000, -999);
+    public static TDoubleArrayList getTroveDoubleArray(){return troveDoubleArray;}
+    public static void addTroveDouble (double addint){troveDoubleArray.add(addint);}
+    public static void clearTroveDouble (){troveDoubleArray.clear();}
 
     @SuppressWarnings("unchecked")
 	@Override
@@ -285,10 +281,6 @@ public class VersiLabController implements Initializable {
         CameraComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> selected, String oldSelection, String newSelection) {
-
-               // System.out.println("Selected " + selected);
-               // System.out.println("old Selection " +  oldSelection);
-               // System.out.println("new Selection " + newSelection);
 
                 if (newSelection==null)
                     newSelection = oldSelection;
@@ -333,7 +325,7 @@ public class VersiLabController implements Initializable {
 
                         case "reset":
                         case "default":
-                           // System.out.println("Camera Selection Error");
+                           System.out.println("Camera Selection Error");
                     }
                 }
             }
@@ -342,8 +334,7 @@ public class VersiLabController implements Initializable {
         numberOfLED.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> selected, String oldSelection, String newSelection) {
-            	System.out.println("LEDS Changed");
-            	//nidaq.
+            	//System.out.println("LEDS Changed");
                 if (oldSelection!=null) {
                     try {
                         niDaqSimpleDemo.endTask();
@@ -391,7 +382,6 @@ public class VersiLabController implements Initializable {
 
 
         AlgorithmComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            // deprecated
             @Override
             public void changed(ObservableValue<? extends String> selected, String oldSelection, String newSelection) {
 
@@ -424,15 +414,9 @@ public class VersiLabController implements Initializable {
 
 
                 try {
-                    // startup for popop
+                    // startup for popup controller
                     //make another stage for scene2
                     popupStage = new Stage();
-                    //popupStage.setScene(scene2);
-                    // tell stage it is meant to pop-up (Modal)
-                    // Not popupStage.initModality(Modality.APPLICATION_MODAL);
-                    // Modality.APPLICATION_MODAL doesnt allow switching between stages
-
-
                     popupStage.initModality(Modality.NONE);
 
                     // load the FXML resource
@@ -448,10 +432,7 @@ public class VersiLabController implements Initializable {
                     popupStage.setTitle(fileName);
 
                     popupStage.setScene(popupScene);
-                    // show the GUI
-                    //popupStage.show();
-
-
+                    
                     // set the proper behavior on closing the application
                     popupController = popupLoader.getController();
 
@@ -466,16 +447,14 @@ public class VersiLabController implements Initializable {
                             popupController.setClosed();
                         }
                     }));
-
-
+                    
                     // show the GUI
                     popupStage.show();
-
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-
         });
 
         CalibrationAlgorithmComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -510,18 +489,10 @@ public class VersiLabController implements Initializable {
                     e.printStackTrace();
                 }
 
-
-
                 try {
-                    // startup for popop
+                    // startup for popup
                     //make another stage for scene2
                     popupStage = new Stage();
-                    //popupStage.setScene(scene2);
-                    // tell stage it is meant to pop-up (Modal)
-                    // Not popupStage.initModality(Modality.APPLICATION_MODAL);
-                    // Modality.APPLICATION_MODAL doesnt allow switching between stages
-
-
                     popupStage.initModality(Modality.NONE);
 
                     // load the FXML resource
@@ -537,10 +508,7 @@ public class VersiLabController implements Initializable {
                     popupStage.setTitle(fileName);
 
                     popupStage.setScene(popupScene);
-                    // show the GUI
-                    //popupStage.show();
-
-
+    
                     // set the proper behavior on closing the application
                     popupController = popupLoader.getController();
 
@@ -556,7 +524,6 @@ public class VersiLabController implements Initializable {
                         }
                     }));
 
-
                     // show the GUI
                     popupStage.show();
 
@@ -564,38 +531,23 @@ public class VersiLabController implements Initializable {
                     e.printStackTrace();
                 }
             }
-
         });
 
-
         cameraExposureSlider.valueProperty().addListener(new ChangeListener() {
-
-            @Override
+        	@Override
             public void changed(ObservableValue arg0, Object arg1, Object arg2) {
-                cameraExposureText.textProperty().setValue(
-                        String.valueOf((int) cameraExposureSlider.getValue())+" ms");
-                //System.out.println("slider value changed");
+                cameraExposureText.textProperty().setValue(String.valueOf((int) cameraExposureSlider.getValue())+" ms");
                 intCameraExposure = (int)cameraExposureSlider.getValue();
-                
-                //set(CV_CAP_PROP_EXPOSURE, (double)cameraExposureSlider.getValue()/1000 );
-                //capture.set(CAP_PROP_FRAME_WIDTH ,((double)cameraExposureSlider.getValue()));
-                //capture.set(CAP_PROP_FRAME_HEIGHT ,((double)cameraExposureSlider.getValue()));
-                //CAP_PROP_FRAME_WIDTH    =3,
-                 //       CAP_PROP_FRAME_HEIGHT   =4,
             }
         });
 
         saveRawDataFrequencySlider.valueProperty().addListener(new ChangeListener() {
-
             @Override
             public void changed(ObservableValue arg0, Object arg1, Object arg2) {
                 saveRawDataFrequencyText.textProperty().setValue("1/" +
                         String.valueOf((int) saveRawDataFrequencySlider.getValue()));
-                //System.out.println("slider value changed");
-
             }
         });
-
     }
 
     @FXML
@@ -621,14 +573,13 @@ public class VersiLabController implements Initializable {
                     public void run() {
                         counter++;
                         updateTimers();
-                        // LED Control
+                        // LED Control // all on? needs differentiation from camera loop
                         LEDControl();
                         grabFrame();
                         saveRawCalibrationData();
                         processData();
                         saveProcessedCalibrationData();
                         // convert and show the frame
-                        
 
                         if (OpenCVProcessing) {
                             imageToShow = Utils.mat2Image(ProcessedOCVframe);
@@ -662,14 +613,11 @@ public class VersiLabController implements Initializable {
         }
     }
 
-
-
     @FXML
     protected void startCamera(ActionEvent event) {
         loop_processing = true;
         calibration_processing = false;
-       
-
+        
         if (!this.cameraActive) {
         	 System.out.println("Start Camera");
             //Main.popupStage.show();
@@ -715,7 +663,6 @@ public class VersiLabController implements Initializable {
                 this.timer = Executors.newSingleThreadScheduledExecutor();
                 // up to 30 ms delay 
                 this.timer.scheduleAtFixedRate(frameGrabber, 0, 30, TimeUnit.MILLISECONDS);
-
 
                 // update the button content
                 this.button.setText("Stop Camera");
@@ -789,19 +736,16 @@ public class VersiLabController implements Initializable {
                 ProcessedIJframe = ImageJ_ip.processImage(ProcessedIJframe, counter);
             }
         } else if (calibration_processing){
-                if (OpenCVProcessing) {
-                    ProcessedOCVframe = RawOCVframe;
-                    ProcessedOCVframe = openCVCalibration_ip.processImage(ProcessedOCVframe, counter);
-                }
-                else {
-                    ProcessedIJframe = RawIJframe;
-                    ProcessedIJframe = ImageJCalibration_ip.processImage(ProcessedIJframe, counter);
-                }
+            if (OpenCVProcessing) {
+                ProcessedOCVframe = RawOCVframe;
+                ProcessedOCVframe = openCVCalibration_ip.processImage(ProcessedOCVframe, counter);
+            }
+            else {
+                ProcessedIJframe = RawIJframe;
+                ProcessedIJframe = ImageJCalibration_ip.processImage(ProcessedIJframe, counter);
+            }
         }
-
     }
-
-
 
     private void saveRawCalibrationData() {
         //String timedata = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS").format(Calendar.getInstance().getTime());
@@ -907,7 +851,7 @@ public class VersiLabController implements Initializable {
 
                     // converts webcam to black and white
                     if (!RawOCVframe.empty()) {
-                    	System.out.println("Empty");
+                    	
                         Imgproc.cvtColor(RawOCVframe, RawOCVframe, Imgproc.COLOR_BGR2GRAY);
                     }
                     if (!OpenCVProcessing){
@@ -1032,10 +976,6 @@ public class VersiLabController implements Initializable {
         Utils.onFXThread( currentFrame.imageProperty(), imageToShow);
     }
 
-    /*public static void updateImageView( Image image) {
-        //ImageView view = currentFrame;
-        Utils.onFXThread(currentFrame.imageProperty(), image);
-    }*/
 
     /**
      * On application close, stop the acquisition from the camera
@@ -1046,12 +986,7 @@ public class VersiLabController implements Initializable {
     }
 
 
-    /*@FXML
-    public void setCameraExposure(ActionEvent actionEvent){
-        intCameraExposure = (int) cameraExposureSlider.getValue();
-        cameraExposureText.setText(Integer.toString(intCameraExposure));
-    }*/
-
+    // THE LOAD algorithm button was removed. Kept as reference. This method is not used.
     @FXML
     public void loadAlgorithm(ActionEvent actionEvent) {
 
@@ -1127,7 +1062,6 @@ public class VersiLabController implements Initializable {
                 }
 
 
-
                 /** Compilation Requirements *********************************************************************************************/
                 DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
                 JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
@@ -1196,12 +1130,6 @@ public class VersiLabController implements Initializable {
                 // startup for popop
                 //make another stage for scene2
                 popupStage = new Stage();
-                //popupStage.setScene(scene2);
-                // tell stage it is meant to pop-up (Modal)
-                // Not popupStage.initModality(Modality.APPLICATION_MODAL);
-                // Modality.APPLICATION_MODAL doesnt allow switching between stages
-
-
                 popupStage.initModality(Modality.NONE);
 
                 // load the FXML resource
@@ -1218,9 +1146,6 @@ public class VersiLabController implements Initializable {
 
                 popupStage.setScene(popupScene);
                 // show the GUI
-                //popupStage.show();
-
-
                 // set the proper behavior on closing the application
                 popupController = popupLoader.getController();
 
@@ -1236,7 +1161,6 @@ public class VersiLabController implements Initializable {
                     }
                 }));
 
-
                 // show the GUI
                 popupStage.show();
 
@@ -1244,10 +1168,7 @@ public class VersiLabController implements Initializable {
                 e.printStackTrace();
             }
         }
-
     }
-
-
 
     public void addPopupSlider(String name, double min, double max, double value, double step){
         popupController.addSlider(name, min, max, value, step);
@@ -1256,8 +1177,6 @@ public class VersiLabController implements Initializable {
     	//System.out.println("clearpopupSlider");
         popupController.clearSlider();
     }
-
-
 
     public static interface ImageJImageProcess{
 
@@ -1293,10 +1212,10 @@ public class VersiLabController implements Initializable {
             case "Grasshopper":
                     try {
                     	
-                    	// capture.open(1); cameraId is already 1 and opened
-                    	// for opencv we may need 10 bit picture handling
+                    	// Only found of acquiring data using uManager and locally loaded jar and dll files.
+                    	// uManager doesnt build and export to ImageJ.
                     	
-                    	/* micromanager initialisation
+                    	/*//micromanager initialisation for local buildd and camera acquisition
                         core.loadDevice("Camera", "PointGrey", "Grasshopper3 GS3-U3-41C6NIR-C_15123105");
                         //core.loadDevice("LED", "NI100X", "DigitalIO");
                         core.initializeAllDevices();
@@ -1325,8 +1244,6 @@ public class VersiLabController implements Initializable {
             default:
                 break;
         }
-
-
     }
     
     public void setContext(Context context) {

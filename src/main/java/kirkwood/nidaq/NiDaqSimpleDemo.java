@@ -60,7 +60,17 @@ public class NiDaqSimpleDemo {
      * Write the specified data to the digital out lines.
      * @param data
      * @throws NiDaqException
+     * 
+     * 
+     * writeDigitalOut(byte[] data) modified 
+     * split into:
+     * initTask() which initialises task thread 
+     * to allow for repeated calls to writeDigitalOut(byte[] data) that only writes to ports, no task handling
+     * and endTask() when you want to end the thread
+     * author Ian Sweeney
+     * 
      */
+
 
     public static void writeDigitalOut(byte[] data) throws NiDaqException {
         daq.writeDigitalLines(doTask, 1, 1, 10, Nicaiu.DAQmx_Val_GroupByChannel, data);

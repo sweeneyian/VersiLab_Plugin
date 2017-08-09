@@ -5,6 +5,7 @@ import com.Proteus.gui.view.VersiLabController;
 import com.Proteus.imagej.VersiLab_Plugin;
 
 import clojure.lang.IFn;
+import gnu.trove.list.array.TDoubleArrayList;
 import gnu.trove.list.array.TIntArrayList;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
@@ -27,17 +28,32 @@ public class CorePopulationOCV implements VersiLabController.OpenCVImageProcess 
         mainController.clearPopupSliders();
     }
 
+    /*public Mat processImage(Mat imageIn, int counter) {
+        //cvtColor(imageIn, imageIn, COLOR_BGR2GRAY);
+        System.out.println("counter" + counter);
+        Point circlepoint = new Point();
+        TDoubleArrayList troveArray = VersiLabController.getTroveDoubleArray();
+        //List<Circle> balls = new ArrayList<Circle>();
+        for (int i =0; i<VersiLabController.getTroveDoubleArray().size(); i+=3){
+        	circlepoint.x = (int)troveArray.get(i);
+        	circlepoint.y = (int)troveArray.get(i+1);
+            circle(imageIn, circlepoint, (int)troveArray.get(i+2), new Scalar(0, 255, 0), 1);
+        }
+        return imageIn;
+    }*/
+    
     public Mat processImage(Mat imageIn, int counter) {
         //cvtColor(imageIn, imageIn, COLOR_BGR2GRAY);
         System.out.println("counter" + counter);
-
-        TIntArrayList troveIntArray = VersiLabController.getTroveIntArray();
+        Point circlepoint = new Point();
+        Vector<Double> initVec = VersiLabController.getInitVector();
         //List<Circle> balls = new ArrayList<Circle>();
-        for (int i =0; i<troveIntArray.size(); i+=3){
-            //balls.add(new Circle((double)initVec.get(i), (double)initVec.get(i+1), (double)initVec.get(i+2) ));
-
-            circle(imageIn, new Point(troveIntArray.get(i), troveIntArray.get(i+1)), troveIntArray.get(i+2), new Scalar(0, 255, 0), 1);
+        for (int i =0; i<initVec.size(); i+=3){
+        	//System.out.print("circlepoint x :" +(int)(double)initVec.get(i) );
+        	circlepoint.x = (int)(double)initVec.get(i);
+        	circlepoint.y = (int)(double)initVec.get(i+1);
+            circle(imageIn, circlepoint, (int)(double)initVec.get(i+2), new Scalar(0, 255, 0), 1);
         }
-            return imageIn;
+        return imageIn;
     }
 }

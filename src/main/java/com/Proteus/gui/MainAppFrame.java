@@ -23,25 +23,11 @@
  */
 package com.Proteus.gui;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.TilePane;
-
 //import net.imagej.ImageJ;
 import javafx.scene.layout.BorderPane;
 
@@ -61,8 +47,9 @@ import org.scijava.plugin.Parameter;
 
 /**
  * This class is called from the ImageJ plugin.
- *
- * @author Hadrien Mary
+ * 
+ * contributor Hadrien Mary
+ * @author Ian Sweeney
  */
 public class MainAppFrame extends JFrame {
 
@@ -84,112 +71,26 @@ public class MainAppFrame extends JFrame {
 	
 
     public MainAppFrame(ImageJ ij) {
-    	//String pluginPath="";
-    	//String MicroManagerPath="";
+
     	String OpenCVPath="";
-    	//String JNI4NIPath="";
     	chooser = new JFileChooser(); 
     	
-    	
-    	/*chooser.setDialogTitle("Please select ImageJ plugin folder");
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        //chooser.setAcceptAllFileFilterUsed(false);
-        //    
-        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
-        	//System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
-        	//System.out.println("getSelectedFile(): " +  chooser.getSelectedFile());
-        	pluginPath = chooser.getSelectedFile().toString();
-        	
-        	//();
-        	// for some reason doesnt return x64 in directory, add \\x64 it to load 
-        	//System.load(directory + "\\MMCoreJ_wrap.dll");
-  
-        	String line;
-        	int linecount = 0;
-        	try (
-        	    InputStream fis = new FileInputStream(pluginPath+"\\VersiLabConfig.txt");
-        	    InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
-        	    BufferedReader br = new BufferedReader(isr);
-        	) {
-        	    while ((line = br.readLine()) != null) {
-        	       if (linecount==0)
-        	    	   OpenCVPath = line;
-        	       linecount++;
-        	    }
-        	} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        	
-        }*/
-        
-        
-/*        if (MicroManagerPath==""){
-    	
-	        chooser.setDialogTitle("Please select folder micromanager with MMCoreJ_wrap.dll");
-	
-	        //    
-	        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
-	        	//System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
-	        	//System.out.println("getSelectedFile(): " +  chooser.getSelectedFile());
-	        	MicroManagerPath = chooser.getSelectedFile().toString();
-	        	try {
-	        	    Files.write(Paths.get(pluginPath+"VersiLabConfig.txt"), OpenCVPath.getBytes(), StandardOpenOption.APPEND);
-	        	}catch (IOException e) {
-	        	    System.out.println(e);
-	        	}
-	        }
-        }
-        System.load(MicroManagerPath + "\\MMCoreJ_wrap.dll");*/
-        
         if (OpenCVPath==""){
         chooser.setDialogTitle("Please select your systems opencv_java320.dll file in OpenCV->build->java->");
         
 	        //    
 	        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
-	        	//System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
 	        	OpenCVPath = chooser.getSelectedFile().toString();
-	        	// for some reason doesnt return x64 in directory, add \\x64 it to load 
-	        	/*try {
-	        	    Files.write(Paths.get(pluginPath+"VersiLabConfig.txt"), OpenCVPath.getBytes(), StandardOpenOption.APPEND);
-	        	}catch (IOException e) {
-	        	    System.out.println(e);
-	        	}*/
 	        }
         }
         try{
-        	//System.load(OpenCVPath );
-        	System.load("C:\\opencv-3.2.0\\opencv\\build\\java\\x64\\opencv_java320.dll");
-        	//System.load("C:\\Program Files\\Micro-Manager-1.4_64_nightly_20170618\\FlyCapture2_v100.dll");
+        	System.load(OpenCVPath );
         	System.out.println("OPENCV LOADED");}
         catch(Exception e){
         	System.out.println(e);
         	 System.out.println("OPENCV NOT Loaded");
         }
 
-/*        if (JNI4NIPath==""){
-        chooser.setDialogTitle("Please select folder OpenCV->build->java->x64");
-        
-	        //    
-	        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
-	        	//System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
-	        	OpenCVPath = chooser.getSelectedFile().toString();
-	        	// for some reason doesnt return x64 in directory, add \\x64 it to load 
-	        	try {
-	        	    Files.write(Paths.get(pluginPath+"VersiLabConfig.txt"), OpenCVPath.getBytes(), StandardOpenOption.APPEND);
-	        	}catch (IOException e) {
-	        	    System.out.println(e);
-	        	}
-	        }
-        }
-        System.load(JNI4NIPath + "\\JNI4NI.jar");*/
-
-    	
-    	//System.load(opencv_java320.dll);
-    	//nu.pattern.OpenCV.loadLibrary();
         ((Contextual) ij).context().inject(this);
         this.ij = ij;
     }
@@ -206,9 +107,6 @@ public class MainAppFrame extends JFrame {
         this.add(this.fxPanel);
         this.setVisible(true);
         
-
-	    
-
         // The call to runLater() avoid a mix between JavaFX thread and Swing thread.
         Platform.runLater(new Runnable() {
             @Override
@@ -222,13 +120,10 @@ public class MainAppFrame extends JFrame {
     public void initFX(JFXPanel fxPanel) {
         // Init the root layout
         try {
-        	System.out.println("5");
-            FXMLLoader loader = new FXMLLoader();
+        	FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("/com/Proteus/gui/view/VersiLabRootLayout.fxml"));
-            
-            System.out.println("6");
             BorderPane rootLayout = (BorderPane) loader.load();
-            System.out.println("8");
+          
             // Get the controller and add an ImageJ context to it.
             // need to figure out what context is doing exactly 
             VersiLabController controller = loader.getController();
@@ -247,6 +142,4 @@ public class MainAppFrame extends JFrame {
             e.printStackTrace();
         }
     }
-    
-
 }

@@ -15,9 +15,10 @@ import javafx.fxml.FXML;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 /**
- * Created by Owner on 28/05/2017.
+ * Created by Ian Sweeney on 28/05/2017.
+ * Popup GUI for automatically creating sliders with listers and adding to accessible array 
+ * so their values can be indexed.
  */
 public class PopupController implements Initializable {
 
@@ -85,50 +86,6 @@ public class PopupController implements Initializable {
     public static double getSliderValue(int slider_index){
         //index from zero
         double slider_value = sliders.get(slider_index).getValue();
-
         return slider_value;
     }
 }
-    /*@FXML
-    private ListView<Slider> visibleList;
-
-    @FXML
-    private ListView<Text> visibleValues;
-
-    private ObservableList<Slider> sliders =
-            FXCollections.observableArrayList();
-    //private ObservableList<Text> texts =
-    //        FXCollections.observableArrayList();
-
-    @FXML
-    public void addSlider(double min, double max, double value, double step) {
-
-        Slider s = new Slider(min, max, value);
-        s.setBlockIncrement(step);
-        sliders.add(s);
-
-        Text t = new Text();
-        s.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> ov,
-                                Number old_val, Number new_val) {
-                t.setText(new_val.toString());
-            }
-        });
-    }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        System.out.println("initialise popup");
-       // addSlider(0,1,1,1);
-        visibleList.setItems(sliders);
-        //visibleList.setItems(texts);
-    }
-
-    public void setClosed()
-    {
-        System.out.println("close popup");
-    }*/
-
-

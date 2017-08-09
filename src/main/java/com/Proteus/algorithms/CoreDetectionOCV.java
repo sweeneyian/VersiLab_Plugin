@@ -15,32 +15,45 @@ import org.opencv.core.Scalar;
 import static org.opencv.imgproc.Imgproc.*;
 import static org.opencv.imgproc.Imgproc.*;
 
+/*
+ * Core detection algorithm to be used during background calibration phase. 
+ * Background image file needs to be selected for processing.
+ * Cores are saved to memory and accessible during main Camera Loop
+ * 
+ * Slider popup appears giving user ability to control processing parameter values
+ * 
+ * author Ian Sweeney
+ * 
+ */
+
 public class CoreDetectionOCV implements VersiLabController.OpenCVImageProcess {
 
     public void initialise() {
-        //System.out.println("we are here1");
-        VersiLabController mainController = VersiLab_Plugin.getVersiLabPluginController();
-        mainController.clearPopupSliders();
-        mainController.addPopupSlider("1 - Kernel size", 1, 7, 1, 2); // slider [0]
-        mainController.addPopupSlider("2 - Threshold1", 0, 255, 255, 1); // slider [1]
-        mainController.addPopupSlider("3 - Canny Threshold2", 0, 255, 255, 1); // slider [2]
-        mainController.addPopupSlider("3 - Canny Ratio", 0, 255, 1, 1); // slider [3]
-        mainController.addPopupSlider("3 - Aperture size", 3, 7, 3, 2); // slider [4]
-        mainController.addPopupSlider("3 - Bool L2gradient", 0, 1, 1, 1); // slider [5]
+        VersiLabController mc = VersiLab_Plugin.getVersiLabPluginController();
+        mc.clearPopupSliders();
+        mc.addPopupSlider("1 - Kernel size", 1, 7, 1, 2); // slider [0]
+        mc.addPopupSlider("2 - Threshold1", 0, 255, 91, 1); // slider [1]
+        mc.addPopupSlider("3 - Canny Threshold2", 0, 255, 126, 1); // slider [2]
+        mc.addPopupSlider("3 - Canny Ratio", 0, 255, 45, 1); // slider [3]
+        mc.addPopupSlider("3 - Aperture size", 3, 7, 3, 2); // slider [4]
+        mc.addPopupSlider("3 - Bool L2gradient", 0, 1, 1, 1); // slider [5]
 
-        mainController.addPopupSlider("4 - Min_radius", 1, 5, 3, 1); // slider [6]
-        mainController.addPopupSlider("4 - Max_radius", 3, 6, 3, 1); // slider [7]
-        mainController.addPopupSlider("4 - Min_dist", 4, 10, 5, 1); // slider [8]
+        mc.addPopupSlider("4 - Min_radius", 1, 5, 1, 1); // slider [6]
+        mc.addPopupSlider("4 - Max_radius", 3, 6, 6, 1); // slider [7]
+        mc.addPopupSlider("4 - Min_dist", 4, 10, 4, 1); // slider [8]
 
-        mainController.addPopupSlider("4 - Roundness", 1, 2, 1, 0.01); // slider [9]
-        mainController.addPopupSlider("Phase", 0, 5, 0, 1); // slider [10]
+        mc.addPopupSlider("4 - Roundness", 1, 2, 1.6, 0.01); // slider [9]
+        mc.addPopupSlider("Phase", 0, 4, 4, 1); // slider [10]
 
     }
 
     public Mat processImage(Mat imageIn, int counter) {
     	int phase = (int) PopupController.getSliderValue(10); // get Stage
-        if (phase==0) // return raw image
+    	
+        if (phase==0) {// return raw image
+        	System.out.println("phase0");
             return imageIn;
+        }
 
         Mat processed = new Mat();
         Mat heirachy = new Mat();
@@ -69,18 +82,23 @@ public class CoreDetectionOCV implements VersiLabController.OpenCVImageProcess {
 
 
         blur(imageIn, processed, new Size(kernel_size, kernel_size));
-        if (phase==1)
+        if (phase==1) {
+        	System.out.println("phase1");
             return processed;
+        }
 
         threshold(processed, processed, threshold1, 255, 0);
-        if (phase==2)
+        if (phase==2) {
+        	System.out.println("phase2");
             return processed;
-
+        }
 
         Canny(processed, processed, threshold2, threshold2 * ratio, aperture_size, L2gradient);
 
-        if (phase==3)
+        if (phase==3) {
+        	System.out.println("phase3");
             return processed;
+        }
 
         // find the contours
         Imgproc.findContours(processed, contours, heirachy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
@@ -119,14 +137,32 @@ public class CoreDetectionOCV implements VersiLabController.OpenCVImageProcess {
             }
         }
 
-        VersiLabController.clearTroveInt(); // make sure we adding to an empty int array
-
+/*       VersiLabController.clearTroveInt(); // make sure we adding to an empty int array
+        //VersiLabController.clearInitVector();
+        Point circlepoint = new Point();
         for (Circle ball: balls) {
-                circle(imageIn, new Point(ball.x, ball.y), (int) ball.radius, new Scalar(0, 255, 0), 1);
-                VersiLabController.addTroveInt((int)ball.x);
-                VersiLabController.addTroveInt((int)ball.y);
-                VersiLabController.addTroveInt((int)ball.radius);
+        	circlepoint.x = ball.x;
+        	circlepoint.y = ball.y;
+            circle(imageIn, circlepoint, (int) ball.radius, new Scalar(0, 255, 0), 1);
+            VersiLabController.addTroveDouble(ball.x);
+            VersiLabController.addTroveDouble(ball.y);
+            VersiLabController.addTroveDouble(ball.radius);
+        }*/
+        
+        //VersiLabController.clearTroveInt(); // make sure we adding to an empty int array
+        VersiLabController.clearInitVector();
+        Point circlepoint = new Point();
+        for (Circle ball: balls) {
+        	circlepoint.x = ball.x;
+        	circlepoint.y = ball.y;
+            circle(imageIn, circlepoint, (int) ball.radius, new Scalar(0, 255, 0), 1);
+            
+            VersiLabController.addInitVector(ball.x);
+            VersiLabController.addInitVector(ball.y);
+            VersiLabController.addInitVector(ball.radius);
         }
-            return imageIn;
+        
+        System.out.println("phase4");
+        return imageIn;
     }
 }

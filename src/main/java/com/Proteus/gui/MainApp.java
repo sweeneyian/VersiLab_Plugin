@@ -42,7 +42,8 @@ import javafx.stage.Stage;
  * inside ImageJ we can't use JavaFX Application and we need to use MainAppFrame class instead. So
  * this class is only here for education purpose.
  *
- * @author Hadrien Mary
+ * contributor: Hadrien Mary
+ * @author Ian Sweeney
  */
 public class MainApp extends Application {
 	
