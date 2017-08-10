@@ -56,11 +56,10 @@ package com.Proteus.algorithms contains Image Processing algorithms.
 
 'CorePopulationOCV' uses the results of cores detected in 'CoreDetectionOCV' to draw circles in the starting of camera image stream.
 
-To implement a new image processing algorithm called 'NewAlgorithm' that gaussian blurs the image stream
+To implement a new image processing algorithm called 'NewAlgorithm' that gaussian  blurs the image stream
 
 create a  NewAlgorithm.java file in com.Proteus.algorithms
-	
-	
+
 	
 	package com.Proteus.algorithms;
 	
@@ -119,15 +118,25 @@ https://proteus.ac.uk/
 
 ## To Do
 
-OpenCV dll files get imported runtime for acquiring images from Webcam.
+OpenCV dll files get imported during runtime 'FileChooser' for acquiring images from Webcam.
 
-'Bytedeco' shows the most promise for implementing universal hardware controls of specialised cameras. such as Grasshopper from FlyCapture2 dll files.
+'Bytedeco' shows the most promise for implementing universal hardware controls of specialised cameras. such as Grasshopper from FlyCapture2 dll files. This would be the next line of investigation and integration.
+
+http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22flycapture-platform%22
 
 http://bytedeco.org/
 
-## Authors
 
-- [Ian Sweeney](mailto:sweeney.ian@gmail.com).
+
+## Author
+
+- [Ian Sweeney](mailto:sweeney.ian@gmail.com)
+
+
+## Project Handed over to 
+
+- [Antonios Perperidis](mailto:A.Perperidis@hw.ac.uk)
+
 
 ## License
 
