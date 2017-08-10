@@ -84,7 +84,7 @@ create a  `NewAlgorithm.java` file in `com.Proteus.algorithms`
 	public void initialise(){
 	
 		// this is how we initialise initialise popup sliders
-		VersiLabController mainController = 		Versilab_Plugin.getVersiLabPluginController();
+		VersiLabController mainController = Versilab_Plugin.getVersiLabPluginController();
 		mainController.addPopupSlider("Sigma", 0,20,1,0.1);
 		
 	}
@@ -106,7 +106,7 @@ create a  `NewAlgorithm.java` file in `com.Proteus.algorithms`
 
 # Links:
 
-This is ImageJ plugin built from combination of ImageJ guides
+Versilab is an ImageJ plugin built from combination of ImageJ guides
 
 https://imagej.net/Developing_Plugins_for_ImageJ_1.x
 
@@ -122,6 +122,7 @@ https://imagej.net/Distribution
 More details for Proteus and OEM Imaging can be found at: 
 
 https://proteus.ac.uk/
+
 
 ## Next To Do
 
