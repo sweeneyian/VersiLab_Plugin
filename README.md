@@ -63,9 +63,7 @@ package com.Proteus.algorithms contains Image Processing algorithms.
 
 `CorePopulationOCV` uses the results of cores detected in `CoreDetectionOCV` to draw circles in the starting of camera image stream.
 
-To implement a new image processing algorithm called `NewAlgorithm` that gaussian  blurs the image stream
-
-create a  `NewAlgorithm.java` file in `com.Proteus.algorithms`
+To implement a new image processing algorithm called `NewAlgorithm` that gaussian  blurs the image stream create a  `NewAlgorithm.java` file in `com.Proteus.algorithms`
 
 	
 	package com.Proteus.algorithms;
@@ -82,13 +80,10 @@ create a  `NewAlgorithm.java` file in `com.Proteus.algorithms`
 	public class NewAlgorithm implements VersiLabController.OpenCVImageProcess {
 	
 	public void initialise(){
-	
 		// this is how we initialise initialise popup sliders
 		VersiLabController mainController = Versilab_Plugin.getVersiLabPluginController();
 		mainController.addPopupSlider("Sigma", 0,20,1,0.1);
-		
 	}
-	
 	
 	public Mat processImage(Mat imageIn, int counter) {
 
@@ -98,11 +93,25 @@ create a  `NewAlgorithm.java` file in `com.Proteus.algorithms`
 		// Do blurring based on slider value
 		Imgproc.GaussianBlur(imageIn, imageIn, size, sigma, sigma, BORDER_DEFAULT);
 			
-			
 		return imageIn;
     }
 
 		
+And add the name `NewAlgorithm` to  `VersiLabRootLayout.fxml` in `com.Proteus.gui.view` to an algorithm drop down menu
+
+	<ComboBox fx:id="AlgorithmComboBox" prefWidth="170.0" promptText="Loop Algorithm" GridPane.columnIndex="0" GridPane.rowIndex="14">
+	                <items>
+	                    <FXCollections fx:factory="observableArrayList">
+	                        
+	                        <String fx:value="NewAlgorithm"/>
+	                        
+	                        <String fx:value="CorePopulationOCV"/>
+	                        <String fx:value="TestImageJ" />
+	                        <String fx:value="TestOpenCV" />
+	                    </FXCollections>
+	                </items>
+	            </ComboBox>
+
 
 # Links:
 
