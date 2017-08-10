@@ -7,7 +7,7 @@ Snapshot of Versilab detecting cores
 
 https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/versilab%20snapshot.png?raw=true
 
-![versilab snapshot](https://raw.github.com/{sweeneyian}/{VersiLab_Plugin}/{1.0.3-SNAPSHOT}/{src/main/resources/})
+![versilab snapshot](https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/versilab%20snapshot.png?raw=true)
 
 # Requirements: 
 
