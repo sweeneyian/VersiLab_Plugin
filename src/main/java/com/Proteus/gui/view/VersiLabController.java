@@ -104,15 +104,20 @@ import com.Proteus.utils.Utils;
 
 import gnu.trove.list.array.TDoubleArrayList;
 import gnu.trove.list.array.TIntArrayList;
-import ij.ImagePlus;
+import ij.*;
 import ij.io.FileSaver;
 
 /**
- * FXML Controller class
+ * VersiLabController class
+ * 
+ * Main ccontrolss for Versilab plugin in this class
+ * This controller supports the VersiLabRootLayout.fxml JavaFX GUI file
  *
  * contributor Haiden Mary
  * author Ian Sweeney
+ * 
  * */
+
 public class VersiLabController implements Initializable {
     @Parameter
     private LogService log;

@@ -3,7 +3,6 @@ package com.Proteus.utils;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 
-import ij.ImagePlus;
 import org.opencv.core.Mat;
 
 import javafx.application.Platform;

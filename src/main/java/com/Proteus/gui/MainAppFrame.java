@@ -36,7 +36,7 @@ import javax.swing.JFrame;
 import net.imagej.ImageJ;
 
 import com.Proteus.gui.view.VersiLabController;
-import com.Proteus.imagej.VersiLab_Plugin;
+import com.Proteus.imagej.Versilab_Plugin;
 
 import ij.WindowManager; 
 
@@ -67,8 +67,6 @@ public class MainAppFrame extends JFrame {
     
     private JFileChooser chooser;
     
-
-	
 
     public MainAppFrame(ImageJ ij) {
 
@@ -128,7 +126,7 @@ public class MainAppFrame extends JFrame {
             // need to figure out what context is doing exactly 
             VersiLabController controller = loader.getController();
             controller.setContext(((Contextual) ij).context());
-            VersiLab_Plugin.setVeriLabPluginController(controller);
+            Versilab_Plugin.setVeriLabPluginController(controller);
             
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);

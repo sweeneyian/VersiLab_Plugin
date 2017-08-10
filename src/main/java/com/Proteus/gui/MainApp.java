@@ -55,16 +55,8 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
 
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("VersiLab!");
+        this.primaryStage.setTitle("Versilab 1.0.3-SNAPSHOT");
 
-       
-//    	DirectoryChooser directoryChooser = new DirectoryChooser();
-//    	directoryChooser.setTitle("Please select folder OpenCV->build->java->x64");
-//        File selectedDirectory = directoryChooser.showDialog(primaryStage);
-//	    String directory = selectedDirectory.getAbsolutePath();
-//        //System
-//	    System.load(directory + "\\opencv_java320.dll");
-	    
         this.initRootLayout();
 
         this.primaryStage.show();

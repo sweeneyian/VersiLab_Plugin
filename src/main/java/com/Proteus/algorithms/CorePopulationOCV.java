@@ -2,7 +2,7 @@ package com.Proteus.algorithms;
 
 import com.Proteus.gui.view.PopupController;
 import com.Proteus.gui.view.VersiLabController;
-import com.Proteus.imagej.VersiLab_Plugin;
+import com.Proteus.imagej.Versilab_Plugin;
 
 import clojure.lang.IFn;
 import gnu.trove.list.array.TDoubleArrayList;
@@ -24,7 +24,7 @@ public class CorePopulationOCV implements VersiLabController.OpenCVImageProcess 
 
     public void initialise() {
         //System.out.println("we are here1");
-        VersiLabController mainController = VersiLab_Plugin.getVersiLabPluginController();
+        VersiLabController mainController = Versilab_Plugin.getVersiLabPluginController();
         mainController.clearPopupSliders();
     }
 

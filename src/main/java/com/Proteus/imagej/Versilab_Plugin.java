@@ -27,34 +27,35 @@ import com.Proteus.gui.MainAppFrame;
 import com.Proteus.gui.view.VersiLabController;
 
 import net.imagej.ImageJ;
-
-//import imagej.ImageJ;
-
-//import net.imagej.plugin.minimalJavaFXPlugin.gui.MainAppFrame;
-
 import org.scijava.command.Command;
 import org.scijava.log.LogService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
+/**
+ * FXML Controller class
+ *
+ * contributor Haiden Mary
+ * author Ian Sweeney.
+ * 
+ * */
 
-
-@Plugin(type = Command.class, menuPath = "Plugins>1VersiLab_Plugin")
-public class VersiLab_Plugin implements Command {
+@Plugin(type = Command.class, menuPath = "Plugins>Versilab_Plugin")
+public class Versilab_Plugin implements Command {
 	@Parameter
     private ImageJ ij;
 
     @Parameter
     private LogService log;
 
-    public static final String PLUGIN_NAME = "1VersiLab_Plugin";
+    public static final String PLUGIN_NAME = "Versilab";
     public static final String VERSION = version();
     
     public static VersiLabController versiLabController;
 
     private static String version() {
         String version = null;
-        final Package pack = VersiLab_Plugin.class.getPackage();
+        final Package pack = Versilab_Plugin.class.getPackage();
         if (pack != null) {
             version = pack.getImplementationVersion();
         }
@@ -67,9 +68,7 @@ public class VersiLab_Plugin implements Command {
         log.info("Running " + PLUGIN_NAME + " version " + VERSION);
                
         // Launch JavaFX interface
-        System.out.println("3");
         MainAppFrame app = new MainAppFrame(ij);
-        System.out.println("4");
         app.setTitle(PLUGIN_NAME + " version " + VERSION);
         app.init();
 
@@ -77,14 +76,16 @@ public class VersiLab_Plugin implements Command {
 
     public static void main(final String... args) throws Exception {
         // Launch ImageJ as usual.
-        //final ImageJ ij = ImageJ.Main(args); //Main.launch(args);
-    	System.out.println("1");
         final ImageJ ij = net.imagej.Main.launch(args);
-        System.out.println("2");
-        // Launch the command.
+        /*
+         * final ImageJ ij = net.imagej.Main.launch(args); creates error:
+         * 
+         * Aug 10, 2017 11:01:38 AM java.util.prefs.WindowsPreferences <init>
+         * WARNING: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx(...) returned error code 5.*/
+
         
-        ij.command().run(VersiLab_Plugin.class, true);
-        System.out.println("3");
+        // Launch the command.
+        ij.command().run(Versilab_Plugin.class, true);
     }
     
     public static void setVeriLabPluginController(VersiLabController vlc){
