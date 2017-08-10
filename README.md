@@ -65,7 +65,7 @@ create a  NewAlgorithm.java file in com.Proteus.algorithms
 			
 		return imageIn;
     }
-}
+
 		
 
 
