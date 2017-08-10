@@ -3,10 +3,12 @@
 `VersiLab_Plugin` is early development targeted towards pre-clinical 
 optical endo-microscopy (OEM). It is a plugin using JavaFX GUI, can acquire images from webcam, allows the processing of images in real-time from selection of drop down processing algorithms, and control of National Instruments Digtal Module for controlling LEDS.
 
-Snapshot of Versilab detecting cores
-
-
+Snapshot of Versilab detecting cores:
 ![versilab snapshot](https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/versilab%20snapshot.png?raw=true)
+
+
+Snapshot of Versilab blurring real-time webcam:
+![blur](https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/blur.png?raw=true)
 
 # Requirements: 
 
@@ -131,6 +133,7 @@ http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22flycapture-platform%22
 
 http://bytedeco.org/
 
+Memory management!
 
 
 ## Author
