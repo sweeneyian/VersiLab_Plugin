@@ -5,7 +5,6 @@ optical endo-microscopy (OEM). It is a plugin using JavaFX GUI, can acquire imag
 
 Snapshot of Versilab detecting cores
 
-https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/versilab%20snapshot.png?raw=true
 
 ![versilab snapshot](https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/versilab%20snapshot.png?raw=true)
 
