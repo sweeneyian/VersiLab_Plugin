@@ -5,16 +5,46 @@ optical endo-microscopy (OEM). It is a plugin using JavaFX GUI, can acquire imag
 
 # Requirements: 
 
+## Java JDK 1.8
+
+install JDK 1.8 from
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+Ensure 'JAVA_HOME' environment variable is set and points to your JDK installation
+
+## Maven
+
+https://maven.apache.org/download.cgi
+
+and follow installation instructions
+
+https://maven.apache.org/install.html
+
+Extract distribution archive in any directory
+
+''' unzip apache-maven-3.5.0-bin.zip '''
+
+Add the bin directory of the created directory apache-maven-3.5.0 to the PATH environment variable
+
+
 ## OpenCV:
 
-The instalation of OpenCV 3.2 for webcam control. On startup a FileChooser popup will request 'opencv_java320.dll' filepath. typically '\opencv\build\java\x64\opencv_java320.dll' for 64-bit machines. http://opencv.org/opencv-3-2.html
+download and install 'OpenCV'
+http://opencv.org/opencv-3-2.html
+
+
+The instalation of OpenCV 3.2 for webcam control. On startup a FileChooser popup will request 'opencv_java320.dll' filepath. typically '\opencv\build\java\x64\opencv_java320.dll' for 64-bit machines. 
+
 
 
 
 ## National Instruments LED's
 
-Versilab plugin is Tested with NI-9402 C Series Digital Module and port LEDS. The instalation of 'NI-DAQmx 17.0.0' from http://www.ni.com/nisearch/app/main/p/bot/no/ap/tech/lang/en/pg/1/sn/catnav:du,n8:3478.41.181.5495,ssnav:ndr/
-and using NI Max to name the Digital Module as 'cDAQ1'
+Versilab plugin is Tested with NI-9402 C Series Digital Module and port LEDS. 
+
+Install 'NI-DAQmx 17.0.0' from 
+http://www.ni.com/nisearch/app/main/p/bot/no/ap/tech/lang/en/pg/1/sn/catnav:du,n8:3478.41.181.5495,ssnav:ndr/
+
+Then using NI Max to name the Digital Module as 'cDAQ1'
 
 
 
