@@ -7,9 +7,9 @@ optical endo-microscopy (OEM). It is a plugin using JavaFX GUI, can acquire imag
 
 ## Java JDK 1.8
 
-install JDK 1.8 from
+install `JDK 1.8` from
 http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-Ensure 'JAVA_HOME' environment variable is set and points to your JDK installation
+Ensure `JAVA_HOME` environment variable is set and points to your JDK installation
 
 ## Maven
 
@@ -23,12 +23,12 @@ Extract distribution archive in any directory
 
 	unzip apache-maven-3.5.0-bin.zip 
 
-Add the bin directory of the created directory apache-maven-3.5.0 to the PATH environment variable
+Add the `bin` directory of the created directory apache-maven-3.5.0 to the `PATH` environment variable
 
 
 ## OpenCV:
 
-download and install 'OpenCV'
+download and install `OpenCV`
 http://opencv.org/opencv-3-2.html
 
 
@@ -44,7 +44,7 @@ Versilab plugin is Tested with NI-9402 C Series Digital Module and port LEDS.
 Install 'NI-DAQmx 17.0.0' from 
 http://www.ni.com/nisearch/app/main/p/bot/no/ap/tech/lang/en/pg/1/sn/catnav:du,n8:3478.41.181.5495,ssnav:ndr/
 
-Then using NI Max to name the Digital Module as 'cDAQ1'
+Then using `NI Max` to `name` the Digital Module as `cDAQ1` 
 
 
 
@@ -52,13 +52,13 @@ Then using NI Max to name the Digital Module as 'cDAQ1'
 
 package com.Proteus.algorithms contains Image Processing algorithms.
 
-'CoreDectionOCV' is during the background calibration phase
+`CoreDectionOCV` is during the background calibration phase
 
-'CorePopulationOCV' uses the results of cores detected in 'CoreDetectionOCV' to draw circles in the starting of camera image stream.
+`CorePopulationOCV` uses the results of cores detected in `CoreDetectionOCV` to draw circles in the starting of camera image stream.
 
-To implement a new image processing algorithm called 'NewAlgorithm' that gaussian  blurs the image stream
+To implement a new image processing algorithm called `NewAlgorithm` that gaussian  blurs the image stream
 
-create a  NewAlgorithm.java file in com.Proteus.algorithms
+create a  `NewAlgorithm.java` file in `com.Proteus.algorithms`
 
 	
 	package com.Proteus.algorithms;
@@ -120,7 +120,7 @@ https://proteus.ac.uk/
 
 OpenCV dll files get imported during runtime 'FileChooser' for acquiring images from Webcam.
 
-'Bytedeco' shows the most promise for implementing universal hardware controls of specialised cameras. such as Grasshopper from FlyCapture2 dll files. This would be the next line of investigation and integration.
+`Bytedeco` shows the most promise for implementing universal hardware controls of specialised cameras. such as Grasshopper from FlyCapture2 dll files. This would be the next line of investigation and integration.
 
 http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22flycapture-platform%22
 
