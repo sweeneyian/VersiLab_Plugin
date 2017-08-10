@@ -39,16 +39,16 @@ download and install `OpenCV`
 http://opencv.org/opencv-3-2.html
 
 
-The instalation of OpenCV 3.2 for webcam control. On startup a FileChooser popup will request 'opencv_java320.dll' filepath. typically '\opencv\build\java\x64\opencv_java320.dll' for 64-bit machines. 
+The instalation of OpenCV 3.2 for webcam control. On startup a FileChooser popup will request `opencv_java320.dll` filepath. typically `\opencv\build\java\x64\opencv_java320.dll` for 64-bit machines. 
 
 
 
 
 ## National Instruments LED's
 
-Versilab plugin is Tested with NI-9402 C Series Digital Module and port LEDS. 
+Versilab plugin is Tested with `NI-9402 C Series Digital Module` and port LEDS. 
 
-Install 'NI-DAQmx 17.0.0' from 
+Install `NI-DAQmx 17.0.0` from 
 http://www.ni.com/nisearch/app/main/p/bot/no/ap/tech/lang/en/pg/1/sn/catnav:du,n8:3478.41.181.5495,ssnav:ndr/
 
 Then using `NI Max` to `name` the Digital Module as `cDAQ1` 
