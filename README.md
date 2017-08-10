@@ -29,25 +29,24 @@ package com.Proteus.algorithms contains Image Processing algorithms.
 To implement a new image processing algorithm called 'NewAlgorithm' 
 
 create a  NewAlgorithm.java file in com.Proteus.algorithms
-
-
-'''
-package com.Proteus.algorithms;
-
-import com.Proteus.gui.view.PopupController;
-import com.Proteus.gui.view.VersiLabController;
-import com.Proteus.imagej.Versilab_Plugin;
-
-import org.opencv.core.Mat;
-import org.opencv.core.Size;
-import org.opencv.imgproc.Imgproc;
-
-import static org.opencv.core.Core.BORDER_DEFAULT;
-import static org.opencv.imgproc.Imgproc.*;
-
-public class NewAlgorithm implements VersiLabController.OpenCVImageProcess {
+	
+	
+	
+	package com.Proteus.algorithms;
+	
+	import com.Proteus.gui.view.PopupController;
+	import com.Proteus.gui.view.VersiLabController;
+	import com.Proteus.imagej.Versilab_Plugin;
+	import org.opencv.core.Mat;
+	import org.opencv.core.Size;
+	import org.opencv.imgproc.Imgproc;
+	import static org.opencv.core.Core.BORDER_DEFAULT;
+	import static org.opencv.imgproc.Imgproc.*; 
+	
+	public class NewAlgorithm implements VersiLabController.OpenCVImageProcess {
 	
 	public void initialise(){
+	
 		// this is how we initialise initialise popup sliders
 		VersiLabController mainController = 		Versilab_Plugin.getVersiLabPluginController();
 		mainController.addPopupSlider("Sigma", 0,20,1,0.1);
@@ -56,19 +55,18 @@ public class NewAlgorithm implements VersiLabController.OpenCVImageProcess {
 	
 	
 	public Mat processImage(Mat imageIn, int counter) {
-		// This is the black box
-		
+
 		Size size = new Size(401, 401);
-		double sigma = PopupController.getSliderValue(0); // get value from slider
-		
-		Imgproc.GaussianBlur(imageIn, imageIn, size, sigma, sigma, BORDER_DEFAULT); // Do blurring based on slider value
+		// get value from slider
+		double sigma = PopupController.getSliderValue(0); 
+		// Do blurring based on slider value
+		Imgproc.GaussianBlur(imageIn, imageIn, size, sigma, sigma, BORDER_DEFAULT);
 			
 			
 		return imageIn;
     }
-		
 }
-'''
+		
 
 
 
