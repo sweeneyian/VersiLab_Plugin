@@ -126,7 +126,7 @@ https://proteus.ac.uk/
 
 ## Next To Do
 
-OpenCV dll files get imported during runtime `FileChooser` for acquiring images from Webcam. Its possible using a similar method would work with `Bytedeco` which shows the most promise for implementing universal hardware controls of specialised cameras. such as Grasshopper from FlyCapture2 dll files. This would be the next line of investigation and integration.
+Native OpenCV dll files get imported during runtime using `FileChooser` to specify a local directory. OpenCV can then be used to acquiring images from Webcam. It is possible that a similar method would work with `Bytedeco`, which shows the most promise for implementing universal hardware controls of specialised cameras, such as Grasshopper from FlyCapture2 dll files, which would be the next line of investigation and integration.
 
 http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22flycapture-platform%22
 
