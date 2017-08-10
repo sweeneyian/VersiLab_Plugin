@@ -26,7 +26,7 @@ package com.Proteus.algorithms contains Image Processing algorithms.
 
 'CorePopulationOCV' uses the results of cores detected in 'CoreDetectionOCV' to draw circles in the starting of camera image stream.
 
-To implement a new image processing algorithm called 'NewAlgorithm' 
+To implement a new image processing algorithm called 'NewAlgorithm' that gaussian blurs the image stream
 
 create a  NewAlgorithm.java file in com.Proteus.algorithms
 	
@@ -86,6 +86,14 @@ https://imagej.net/Distribution
 More details for Proteus and OEM Imaging can be found at: 
 
 https://proteus.ac.uk/
+
+## To Do
+
+OpenCV dll files get imported runtime for acquiring images from Webcam.
+
+'Bytedeco' shows the most promise for implementing universal hardware controls of specialised cameras. such as Grasshopper from FlyCapture2 dll files.
+
+http://bytedeco.org/
 
 ## Authors
 
