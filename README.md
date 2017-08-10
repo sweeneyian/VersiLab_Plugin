@@ -21,7 +21,7 @@ https://maven.apache.org/install.html
 
 Extract distribution archive in any directory
 
-''' unzip apache-maven-3.5.0-bin.zip '''
+	unzip apache-maven-3.5.0-bin.zip 
 
 Add the bin directory of the created directory apache-maven-3.5.0 to the PATH environment variable
 
