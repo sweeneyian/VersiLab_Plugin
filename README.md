@@ -68,17 +68,20 @@ create a  NewAlgorithm.java file in com.Proteus.algorithms
 
 		
 
-
-
-#Links:
+# Links:
 
 This is ImageJ plugin built from combination of ImageJ guides
 
 https://imagej.net/Developing_Plugins_for_ImageJ_1.x
+
 http://imagej.net/Build_ImageJ2_Plugin_With_JavaFX
+
 https://imagej.net/Introduction_into_Developing_Plugins
+
 https://imagej.net/Writing_plugins
+
 https://imagej.net/Distribution
+
 
 More details for Proteus and OEM Imaging can be found at: 
 
