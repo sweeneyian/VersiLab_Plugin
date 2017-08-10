@@ -123,15 +123,14 @@ More details for Proteus and OEM Imaging can be found at:
 
 https://proteus.ac.uk/
 
-## To Do
+## Next To Do
 
-OpenCV dll files get imported during runtime 'FileChooser' for acquiring images from Webcam.
-
-`Bytedeco` shows the most promise for implementing universal hardware controls of specialised cameras. such as Grasshopper from FlyCapture2 dll files. This would be the next line of investigation and integration.
+OpenCV dll files get imported during runtime `FileChooser` for acquiring images from Webcam. Its possible using a similar method would work with `Bytedeco` which shows the most promise for implementing universal hardware controls of specialised cameras. such as Grasshopper from FlyCapture2 dll files. This would be the next line of investigation and integration.
 
 http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22flycapture-platform%22
 
 http://bytedeco.org/
+
 
 Memory management!
 
