@@ -32,6 +32,28 @@ Extract distribution archive in any directory
 
 Add the `bin` directory of the created directory apache-maven-3.5.0 to the `PATH` environment variable
 
+## Eclipse:
+
+Download and install `Eclipse` from http://www.eclipse.org/
+
+Clone the Versilab project from https://github.com/sweeneyian/VersiLab_Plugin and unzip to the working directory of Eclipse.
+
+import > existing Maven Project > (the pom.xml of the Versilab clone)
+
+Eclipse Run configurations:
+Add new `Java Application`. 
+Select Project: `Versilab_Plugin`
+Main class: `com.Proteus.imagej.Versilab_Plugin`
+Running this Java application will use Maven to download the projects dependencies and store them in a `.m2` folder like `C:\Users\Owner\.m2\repository`. Note: Running the `Java Application` will bypass some Maven enforcement rules, which can be helpful for local development testing.
+
+Eclipse Run configurations:
+Add new `Maven Build`. 
+select workspace: `${workspace_loc:/Versilab_Plugin}`
+add Parameter: name=`imagej.app.directory` value=`{path to ImageJ or Fiji directory}`
+Running `Maven build` will have more enforcements than running `Java Application` and will ensure outputs are ImageJ compatible and ready for distribution to ImageJ update sites.
+
+
+
 
 ## OpenCV:
 
@@ -46,7 +68,7 @@ The instalation of OpenCV 3.2 for webcam control. On startup a FileChooser popup
 
 ## National Instruments LED's
 
-Versilab plugin is Tested with `NI-9402 C Series Digital Module` and port LEDS. 
+Versilab_Plugin tested with `NI-9402 C Series Digital Module` for LED control. 
 
 Install `NI-DAQmx 17.0.0` from 
 http://www.ni.com/nisearch/app/main/p/bot/no/ap/tech/lang/en/pg/1/sn/catnav:du,n8:3478.41.181.5495,ssnav:ndr/
@@ -142,7 +164,7 @@ http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22flycapture-platform%22
 http://bytedeco.org/
 
 
-Memory management!
+Memory management wiith Java and real-time image processing requires attention.
 
 
 ## Author
