@@ -16,6 +16,7 @@ optical endo-microscopy (OEM). It runs as an ImageJ/Fiji plugin using a JavaFX G
 
 install `JDK 1.8` from
 http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 Ensure `JAVA_HOME` environment variable is set and points to your JDK installation
 
 ## Maven
@@ -42,17 +43,6 @@ import > existing Maven Project > (the pom.xml of the Versilab clone)
 
 ### Eclipse Run configurations:
 
-#### Add new `Java Application`. 
-
-Select Project: `Versilab_Plugin`
-
-Main class: `com.Proteus.imagej.Versilab_Plugin`
-
-Running this Java application will use Maven to download the projects dependencies and store them in a `.m2` folder like `C:\Users\Owner\.m2\repository`. Note: Running the `Java Application` will bypass some Maven enforcement rules, which can be helpful for local development testing.
-
-
-
-
 
 #### Add new `Maven Build`
 
@@ -62,6 +52,16 @@ add Parameter: name=`imagej.app.directory` value=`{path to ImageJ or Fiji direct
 
 Running `Maven build` will have more enforcements than running `Java Application` and will ensure outputs are ImageJ compatible and ready for distribution to ImageJ update sites.
 
+
+
+#### Add new `Java Application`. 
+
+Select Project: `Versilab_Plugin`
+
+Main class: `com.Proteus.imagej.Versilab_Plugin`
+
+Running this Java application will use Maven to download the projects dependencies and store them in a `.m2` folder like `C:\Users\Owner\.m2\repository`. 
+Note: Running the `Java Application` will bypass some Maven enforcement rules, which can be helpful for local development testing but May cause issues if trying to upload jar updates that fail Maven enforcement rules.
 
 
 
@@ -89,7 +89,7 @@ Then using `NI Max` to `name` the Digital Module as `cDAQ1`
 
 # New Image Processing Algorithms
 
-package com.Proteus.algorithms contains Image Processing algorithms.
+`package com.Proteus.algorithms` contains Image Processing algorithms.
 
 `CoreDectionOCV` is during the background calibration phase
 
@@ -167,7 +167,7 @@ https://proteus.ac.uk/
 
 ## Next To Do
 
-Native OpenCV dll files get imported during runtime using `FileChooser` to specify a local directory. OpenCV can then be used to acquiring images from Webcam. It is possible that a similar method would work with `Bytedeco`, which shows the most promise for implementing universal hardware controls of specialised cameras, such as Grasshopper from FlyCapture2 dll files, which would be the next line of investigation and integration.
+Native OpenCV dll files get imported during runtime using `FileChooser` to specify a local directory. OpenCV can then be used to acquiring images from Webcam. It is possible that a similar method would work with `Bytedeco`, which shows the most promise for implementing universal hardware controls of specialised cameras, such as Grasshopper from FlyCapture2 dll files, which would be the next line of investigation and integration for having a modular approach to hardware for real-time image acquisition and processing.
 
 http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22flycapture-platform%22
 
