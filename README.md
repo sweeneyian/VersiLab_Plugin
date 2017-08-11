@@ -41,15 +41,23 @@ Clone the Versilab project from https://github.com/sweeneyian/VersiLab_Plugin an
 import > existing Maven Project > (the pom.xml of the Versilab clone)
 
 Eclipse Run configurations:
+
 Add new `Java Application`. 
+
 Select Project: `Versilab_Plugin`
+
 Main class: `com.Proteus.imagej.Versilab_Plugin`
+
 Running this Java application will use Maven to download the projects dependencies and store them in a `.m2` folder like `C:\Users\Owner\.m2\repository`. Note: Running the `Java Application` will bypass some Maven enforcement rules, which can be helpful for local development testing.
 
 Eclipse Run configurations:
+
 Add new `Maven Build`. 
+
 select workspace: `${workspace_loc:/Versilab_Plugin}`
+
 add Parameter: name=`imagej.app.directory` value=`{path to ImageJ or Fiji directory}`
+
 Running `Maven build` will have more enforcements than running `Java Application` and will ensure outputs are ImageJ compatible and ready for distribution to ImageJ update sites.
 
 
