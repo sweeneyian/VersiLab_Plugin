@@ -204,11 +204,11 @@ Memory management wiith Java and real-time image processing requires attention.
 
 ## Author
 
-- [Ian Sweeney](mailto:sweeney.ian@gmail.com) (mailto:sweeney.ian@gmail.com)
+- [Ian Sweeney](mailto:sweeney.ian@gmail.com) sweeney.ian@gmail.com
 
 ## Project Handed over to 
 
-- [Antonios Perperidis](mailto:A.Perperidis@hw.ac.uk) (mailto:A.Perperidis@hw.ac.uk)
+- [Antonios Perperidis](mailto:A.Perperidis@hw.ac.uk) A.Perperidis@hw.ac.uk
 
 
 ## License
