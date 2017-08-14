@@ -41,7 +41,7 @@ import org.scijava.plugin.Plugin;
  * */
 
 @Plugin(type = Command.class, menuPath = "Plugins>Versilab_Plugin")
-public class Versilab_Plugin implements Command {
+public class VersiLab_Plugin implements Command {
 	@Parameter
     private ImageJ ij;
 
@@ -55,7 +55,7 @@ public class Versilab_Plugin implements Command {
 
     private static String version() {
         String version = null;
-        final Package pack = Versilab_Plugin.class.getPackage();
+        final Package pack = VersiLab_Plugin.class.getPackage();
         if (pack != null) {
             version = pack.getImplementationVersion();
         }
@@ -85,7 +85,7 @@ public class Versilab_Plugin implements Command {
 
         
         // Launch the command.
-        ij.command().run(Versilab_Plugin.class, true);
+        ij.command().run(VersiLab_Plugin.class, true);
     }
     
     public static void setVeriLabPluginController(VersiLabController vlc){

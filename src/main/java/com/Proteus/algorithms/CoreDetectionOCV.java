@@ -2,7 +2,7 @@ package com.Proteus.algorithms;
  
 import com.Proteus.gui.view.PopupController;
 import com.Proteus.gui.view.VersiLabController;
-import com.Proteus.imagej.Versilab_Plugin;
+import com.Proteus.imagej.VersiLab_Plugin;
 
 import org.opencv.core.*;
 import org.opencv.core.Point;
@@ -29,7 +29,7 @@ import static org.opencv.imgproc.Imgproc.*;
 public class CoreDetectionOCV implements VersiLabController.OpenCVImageProcess {
 
     public void initialise() {
-        VersiLabController mc = Versilab_Plugin.getVersiLabPluginController();
+        VersiLabController mc = VersiLab_Plugin.getVersiLabPluginController();
         mc.clearPopupSliders();
         mc.addPopupSlider("1 - Kernel size", 1, 7, 1, 2); // slider [0]
         mc.addPopupSlider("2 - Threshold1", 0, 255, 91, 1); // slider [1]

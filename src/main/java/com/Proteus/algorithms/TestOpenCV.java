@@ -3,7 +3,7 @@ package com.Proteus.algorithms;
 
 import com.Proteus.gui.view.PopupController;
 import com.Proteus.gui.view.VersiLabController;
-import com.Proteus.imagej.Versilab_Plugin;
+import com.Proteus.imagej.VersiLab_Plugin;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
@@ -16,7 +16,7 @@ public class TestOpenCV implements VersiLabController.OpenCVImageProcess {
 	
 	public void initialise(){
 		// this is how we initialise initialise popop sliders
-		VersiLabController mainController = Versilab_Plugin.getVersiLabPluginController();
+		VersiLabController mainController = VersiLab_Plugin.getVersiLabPluginController();
 
 		mainController.addPopupSlider("Sigma", 0,20,1,0.1);
 		//Controller.addPopupSlider("Sigma", 1,20,20,0.1);

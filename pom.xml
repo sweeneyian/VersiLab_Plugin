@@ -11,8 +11,8 @@
         <version>15.4.0</version>
     </parent> 
     
-    <artifactId>Versilab-plugin</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <artifactId>VersiLab-Plugin</artifactId>
+    <version>1.0.4-SNAPSHOT</version>
  
     <name>Versilab plugin for imageJ</name>
     <description>VersiLab Plugin for ImageJ </description>
