@@ -9,7 +9,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
-//import static org.opencv.core.Core.BORDER_DEFAULT;
+import static org.opencv.core.Core.BORDER_DEFAULT;
 import static org.opencv.imgproc.Imgproc.*;
 
 public class TestOpenCV implements VersiLabController.OpenCVImageProcess {
@@ -29,7 +29,7 @@ public class TestOpenCV implements VersiLabController.OpenCVImageProcess {
 		
 		Size size = new Size(401, 401);
 		double sigma = PopupController.getSliderValue(0); // get value from slider
-		//Imgproc.GaussianBlur(imageIn, imageIn, size, sigma, sigma, BORDER_DEFAULT);
+		Imgproc.GaussianBlur(imageIn, imageIn, size, sigma, sigma, BORDER_DEFAULT);
 			
 		return imageIn;
     }
