@@ -12,7 +12,7 @@
     </parent> 
     
     <artifactId>VersiLab-Plugin</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
  
     <name>Versilab plugin for imageJ</name>
     <description>VersiLab Plugin for ImageJ </description>
@@ -171,6 +171,9 @@
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.fxml</include>
+                    
+                    <!-- java fxml also come with css files, while need to be included in project -->
+                    <include>**/*.css</include>
                 </includes>
             </resource>
         </resources>
