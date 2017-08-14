@@ -40,7 +40,7 @@ import org.scijava.plugin.Plugin;
  * 
  * */
 
-@Plugin(type = Command.class, menuPath = "Plugins>Versilab_Plugin")
+@Plugin(type = Command.class, menuPath = "Plugins>VersiLab_Plugin")
 public class VersiLab_Plugin implements Command {
 	@Parameter
     private ImageJ ij;
@@ -48,7 +48,7 @@ public class VersiLab_Plugin implements Command {
     @Parameter
     private LogService log;
 
-    public static final String PLUGIN_NAME = "Versilab";
+    public static final String PLUGIN_NAME = "VersiLab";
     public static final String VERSION = version();
     
     public static VersiLabController versiLabController;
