@@ -1,6 +1,7 @@
 # VersiLab Plugin
 
-`VersiLab_Plugin` is early development targeted towards pre-clinical optical endo-microscopy (OEM). It runs as an ImageJ/Fiji plugin using a JavaFX GUI, can acquire images from webcam, allows the processing of images in real-time from selection of drop down processing algorithms, and control of National Instruments Digtal Module for controlling LEDS.
+`VersiLab_Plugin` is early development targeted towards pre-clinical 
+optical endo-microscopy (OEM). It runs as an ImageJ/Fiji plugin using a JavaFX GUI, can acquire images from webcam, allows the processing of images in real-time from selection of drop down processing algorithms, and control of National Instruments Digtal Module for controlling LEDS.
 
 ## Snapshot of Versilab detecting cores:
 ![versilab snapshot](https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/versilab%20snapshot.png?raw=true)
@@ -9,31 +10,7 @@
 ## Snapshot of Versilab blurring real-time webcam images:
 ![blur](https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/blur.png?raw=true)
 
-# Requirements to run plugin through ImageJ: 
-
-download and install `Fiji` from http://imagej.net/Fiji/Downloads
-
-download and install `OpenCV 3.2` from http://opencv.org/opencv-3-2.html
-
-run the Fiji / ImageJ application 
-
-within (Fiji Is Just) ImageJ select `Help > Update`
-
-once updated, restart application and again select  `Help > Update` then `Manage update sites`
-
-Scroll and select `VersiLab_plugins`, Close, Apply changes, restart application
-
-Select `Plugins > VersiLab_Plugin`
-
-On startup a FileChooser popup will request `opencv_java320.dll` filepath. typically `\opencv\build\java\x64\opencv_java320.dll` for 64-bit machines.
-
-
-# Requirements to develop plugin: 
-
-## Note
-
-Successful rebuilds have been witnessed on Windows 10
-Windows 8 failed build and pointed to errors with parent in pom.xml
+# Requirements: 
 
 ## Java JDK 1.8
 
@@ -187,8 +164,6 @@ More details for Proteus and OEM Imaging can be found at:
 
 https://proteus.ac.uk/
 
-https://proteus.ac.uk/technology/mcwffm/
-
 
 ## Next To Do
 
@@ -199,16 +174,17 @@ http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22flycapture-platform%22
 http://bytedeco.org/
 
 
-Memory management wiith Java and real-time image processing requires attention.
+Memory management with Java and real-time image processing requires attention.
 
 
 ## Author
 
-- [Ian Sweeney](mailto:sweeney.ian@gmail.com) sweeney.ian@gmail.com
+- [Ian Sweeney](mailto:sweeney.ian@gmail.com)
+
 
 ## Project Handed over to 
 
-- [Antonios Perperidis](mailto:A.Perperidis@hw.ac.uk) A.Perperidis@hw.ac.uk
+- [Antonios Perperidis](mailto:A.Perperidis@hw.ac.uk)
 
 
 ## License
