@@ -10,7 +10,27 @@ optical endo-microscopy (OEM). It runs as an ImageJ/Fiji plugin using a JavaFX G
 ## Snapshot of Versilab blurring real-time webcam images:
 ![blur](https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/blur.png?raw=true)
 
-# Requirements: 
+# Requirements to run plugin through ImageJ: 
+
+download and install `Fiji` from http://imagej.net/Fiji/Downloads
+
+download and install `OpenCV` from http://opencv.org/opencv-3-2.html
+
+run the Fiji / ImageJ application 
+
+within (Fiji Is Just) ImageJ select `Help > Update`
+
+once updated, restart application and again select  `Help > Update` then `Manage update sites`
+
+Scroll and select `VersiLab_plugins`, Close, Apply changes, restart application
+
+Select `Plugins > VersiLab_Plugin`
+
+On startup a FileChooser popup will request `opencv_java320.dll` filepath. typically `\opencv\build\java\x64\opencv_java320.dll` for 64-bit machines.
+
+
+
+# Requirements to develop plugin: 
 
 ## Java JDK 1.8
 

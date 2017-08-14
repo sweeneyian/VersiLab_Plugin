@@ -83,7 +83,10 @@ public class MainAppFrame extends JFrame {
         }
         try{
         	System.load(OpenCVPath );
-        	System.out.println("OPENCV LOADED");}
+        	System.out.println("OPENCV LOADED");
+        	//System.load("C:\\Program Files\\Micro-Manager-1.4_64_nightly_20170618\\FlyCapture2_v100.dll");
+        	//System.out.println("Flycap LOADED");
+        }
         catch(Exception e){
         	System.out.println(e);
         	 System.out.println("OPENCV NOT Loaded");
