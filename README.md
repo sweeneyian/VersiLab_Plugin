@@ -30,6 +30,11 @@ On startup a FileChooser popup will request `opencv_java320.dll` filepath. typic
 
 # Requirements to develop plugin: 
 
+## Note
+
+Successful rebuilds have been witnessed on Windows 10
+Windows 8 failed build and pointed to errors with parent in pom.xml
+
 ## Java JDK 1.8
 
 install `JDK 1.8` from
