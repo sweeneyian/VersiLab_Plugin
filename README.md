@@ -14,7 +14,7 @@ optical endo-microscopy (OEM). It runs as an ImageJ/Fiji plugin using a JavaFX G
 
 download and install `Fiji` from http://imagej.net/Fiji/Downloads
 
-download and install `OpenCV` from http://opencv.org/opencv-3-2.html
+download and install `OpenCV 3.2` from http://opencv.org/opencv-3-2.html
 
 run the Fiji / ImageJ application 
 
@@ -27,7 +27,6 @@ Scroll and select `VersiLab_plugins`, Close, Apply changes, restart application
 Select `Plugins > VersiLab_Plugin`
 
 On startup a FileChooser popup will request `opencv_java320.dll` filepath. typically `\opencv\build\java\x64\opencv_java320.dll` for 64-bit machines.
-
 
 
 # Requirements to develop plugin: 
@@ -199,12 +198,12 @@ Memory management wiith Java and real-time image processing requires attention.
 
 ## Author
 
-- [Ian Sweeney](mailto:sweeney.ian@gmail.com)
+- Ian Sweeney(mailto:sweeney.ian@gmail.com)
 
 
 ## Project Handed over to 
 
-- [Antonios Perperidis](mailto:A.Perperidis@hw.ac.uk)
+- Antonios Perperidis (mailto:A.Perperidis@hw.ac.uk)
 
 
 ## License
