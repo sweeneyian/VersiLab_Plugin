@@ -104,7 +104,7 @@
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="CoreDetectionOCV" />
-                        <String fx:value="TestOpenCV" />-->
+                        <String fx:value="TestOpenCV" />
                     </FXCollections>
                 </items>
             </ComboBox>
@@ -114,7 +114,6 @@
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="CorePopulationOCV"/>
-                        <String fx:value="TestImageJ" />
                         <String fx:value="TestOpenCV" />
                     </FXCollections>
                 </items>
