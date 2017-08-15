@@ -12,7 +12,7 @@
     </parent> 
     
     <artifactId>VersiLab-Plugin</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
  
     <name>Versilab plugin for imageJ</name>
     <description>VersiLab Plugin for ImageJ </description>
@@ -82,6 +82,12 @@
             <groupId>org.scijava</groupId>
             <artifactId>scijava-common</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/sc.fiji/fiji-lib -->
+		<dependency>
+			<groupId>sc.fiji</groupId>
+			<artifactId>fiji-lib</artifactId>
+			<version>2.1.2</version>
+		</dependency>
         
         <!-- Enable IJ1 interface at runtime -->
         <dependency>
@@ -115,6 +121,15 @@
 		    <artifactId>opencv</artifactId>
 		    <version>3.2.0-1</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.jfree/jfreechart -->
+		<!-- JNI4NI depends on jfree -->
+		<dependency>
+		    <groupId>org.jfree</groupId>
+		    <artifactId>jfreechart</artifactId>
+		    <version>1.0.19</version>
+		</dependency>
+		
 
 		<!-- https://mvnrepository.com/artifact/org.bytedeco.javacpp-presets/opencv -->
 		<!-- ByteDeco is possible future development -->
