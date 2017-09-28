@@ -1,7 +1,8 @@
 # VersiLab Plugin
 
-`VersiLab_Plugin` is early development targeted towards pre-clinical 
-optical endo-microscopy (OEM). It runs as an ImageJ/Fiji plugin using a JavaFX GUI, can acquire images from webcam, allows the processing of images in real-time from selection of drop down processing algorithms, and control of National Instruments Digtal Module for controlling LEDS.
+`VersiLab_Plugin` is early development targeted towards pre-clinical optical endo-microscopy (OEM). It runs as an ImageJ/Fiji plugin using a JavaFX GUI, can acquire images from webcam, allows the processing of images in real-time from selection of drop down processing algorithms, and control of National Instruments Digtal Module for controlling LEDS.
+
+Demonstration on YouTube at https://goo.gl/KABxua
 
 ## Snapshot of Versilab detecting cores:
 ![versilab snapshot](https://github.com/sweeneyian/VersiLab_Plugin/blob/master/src/main/resources/versilab%20snapshot.png?raw=true)
@@ -163,6 +164,10 @@ https://imagej.net/Distribution
 More details for Proteus and OEM Imaging can be found at: 
 
 https://proteus.ac.uk/
+
+YouTube demonstration at
+
+https://goo.gl/KABxua
 
 
 ## Next To Do
